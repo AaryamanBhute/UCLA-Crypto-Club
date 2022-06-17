@@ -1,0 +1,203 @@
+:root{
+    --ucla-blue: #2774AE;
+    --ucla-gold: #FFD100;
+    --lightest-blue: #DAEBFE;
+    --lighter-blue: #8BB8E8;
+    --darker-blue: #005587;
+    --darkest-blue: #003B5C;
+    --darker-gold: #FFC72C;
+    --darkest-gold: #FFB81C;
+    --green: #00D100;
+    --light-green: #00A300;
+    --dark-green: #00FF00;
+}
+
+.center{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+html{
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {    
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: Helvetica, sans-serif;
+    background-color: var(--lightest-blue);
+}
+
+#navbar{
+    align-items: center;
+    display: flex;
+    background-color: var(--darker-blue);
+    z-index: 3;
+}
+
+#navbar a{
+    padding-left: 3%;
+    padding-right: 3%;
+    font-weight: 750;
+    font-size: 1.2em;
+    line-height: 100%;
+
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: var(--darker-gold);
+
+    position: relative;
+}
+
+#navbar a:hover{
+    color: var(--lighter-blue);
+    cursor: pointer;
+    text-align: center;
+}
+
+#navlogo{
+    height: auto;
+}
+
+.align-right{
+    margin-left: auto;
+    padding-right: 1%!important;
+}
+
+.profile-img{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    max-height: 80%;
+    width: auto;
+}
+
+.max-height{
+    height: 100%;
+}
+
+/* Phone/Tablet */
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 1050px){
+    #navbar{
+        padding: 0;
+        height: 250px;
+        width: 100%;
+        position: fixed;
+    }
+
+    #navlogo{
+        width: 500px;
+    }
+
+    .profile-img{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .nav-logo-parent{
+        width: 100%;
+    }
+
+    #mobile-menu-button{
+        position: fixed;
+        transform: scale(2.5, 2.5);
+        z-index: 5;
+        top: 50px;
+        left: 80px;
+    }
+
+    .profile-img-mobile{
+        width: 150px;
+        height: auto;
+        position: fixed;
+        z-index: 4;
+        top: 50px;
+        right: 30px;
+    }
+
+    #mobile-sidebar{
+        display: flex;
+        height: 100vh;
+        width: 800px;
+        left: -800px;
+        background-color: var(--darkest-blue);
+        position: fixed;
+        z-index: 4;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #menu-list{
+        display: flex;
+        flex-wrap: wrap;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #menu-list a{
+        color: var(--darker-gold);
+        width: 80%;
+        margin-left: 20%;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        font-size: 4em;
+        font-style: italic;
+        text-decoration: solid;
+    }
+
+    #navbar-margin{
+        height: 250px;
+    }
+
+    #navlogo-mobile{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: 650px;
+        height: auto;
+    }
+
+    .profile-img-mobile-sidebar{
+        width: 500px;
+        height: auto;
+    }
+}
+
+/* Tablets, small changes from above section*/
+
+@media only screen 
+  and (min-device-width: 720px) 
+  and (max-device-width: 1050px){
+    .profile-img-mobile-sidebar{
+        display: none!important;
+    }
+}
+
+/* Computers */
+@media only screen 
+  and (min-device-width: 1051px) {
+
+    #navbar{
+        padding: 0;
+        height: 15vh;
+        max-height: 100px;
+    }
+
+    #navlogo{
+        min-width: 50px;
+        max-width: 200px;
+        padding-left: 1%;
+        padding-right: 4.5%;
+        margin-right: auto;
+        padding-left: 1%;
+    }
+
+    #navbar a{
+        width: fit-content;
+    }
+}

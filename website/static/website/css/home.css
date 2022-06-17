@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+.divider{
+    height: 20px;
+}
+
+.highlight-gold{
+    color: var(--darkest-gold);
+}
+
+.entry{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.pageimg{
+    object-fit: contain;
+    height: fit-content;
+    background-color: var(--lighter-blue);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.pagesidetext{
+    color: var(--darkest-blue);
+    font-family: 'Oswald', sans-serif;
+}
+
+.header{
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0;
+}
+
+.miniheader{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.sectiontitle{
+    text-align: center;
+    font-size: 3em;
+    font-weight: 900;
+    padding: 0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: var(--darkest-blue);
+    font-style: italic;
+}
+
+.sectiontitle-mini{
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 900;
+    padding: 0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: var(--darkest-blue);
+    font-style: bold;
+}
+
+#popup{
+    position: absolute;
+    display: flex;
+    background-color: var(--ucla-blue);
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#popup p{
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.confettilaunchers{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10%;
+}
+
+.confettilaunchers img{
+    width: 30%;
+}
+
+.closebutton{
+    position: absolute;
+    cursor: pointer;
+}
+
+.closebutton:hover{
+    filter: grayscale(100%) brightness(80%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+
+/* Phone/Tablet */
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1050px){
+    .pageimg{
+        max-width: 80%;
+        padding: 10px;
+        margin: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 30px;
+    }
+    .entry{
+        flex-wrap: wrap;
+    }
+    .off-phones{
+        display: none!important;
+    }
+    .pagesidetext{
+        max-width: 70%;
+        padding: 20px;
+        font-size: 2.5em;
+        font-weight: 400;
+    }
+    #popup{
+        width: 90%;
+        height: 450px;
+        right: 5%;
+        top: 270px;
+    }
+    .closebutton{
+        height: 100px;
+        width: 100px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+/* Computers */
+
+@media only screen and (min-device-width: 1051px) {
+    .pageimg{
+        max-width: 30%;
+        padding: 10px;
+        margin: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 30px;
+    }
+
+    .pagesidetext{
+        max-width: 40%;
+        padding: 20px;
+        font-size: 1.3em;
+        font-weight: 400;
+    }
+
+    .off-computer{
+        display: none;
+    }
+
+    #popup{
+        width: 30%;
+        aspect-ratio: 3 / 2;
+        margin-top: 30px;
+        right: 0;
+        margin-right: 30px;
+    }
+
+    .closebutton{
+        height: 50px;
+        width: 50px;
+        top: 12px;
+        right: 12px;
+    }
+}

@@ -1,0 +1,39 @@
+#searchmenu{
+    display: flex;
+    width: fit-content;
+    background-color: var(--ucla-blue);
+    border-radius: 10%;
+}
+
+#searchselection{
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    padding: 10px;
+}
+
+#sortmethod li{
+    padding: 0;
+}
+
+.selectionbutton{
+    text-align: center;
+    border-radius: 50%;
+    background-color: grey;
+    width: 20px;
+    height: 20px;
+}
+
+/* Phone/Tablet */
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 850px){
+
+}
+
+/* Computers */
+@media only screen 
+  and (min-device-width: 1051px) {
+}

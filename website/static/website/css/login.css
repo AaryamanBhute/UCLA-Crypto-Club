@@ -1,0 +1,76 @@
+#loginbutton{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid var(--darkest-blue);
+    border-radius: 50px;
+    background-color: var(--darkest-blue);
+    margin-top: 30px;
+}
+
+#logoutbutton{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid var(--darkest-blue);
+    border-radius: 50px;
+    background-color: var(--darkest-blue);
+    margin-top: 10px;
+}
+
+.loginlink{
+    color: var(--darkest-gold);
+    text-decoration: none;
+    font-style: italic;
+}
+
+.logoutlink{
+    color: var(--darkest-gold);
+    text-decoration: none;
+    font-style: italic;
+}
+
+.loneimage{
+    width: 300px;
+    max-width: 80%;
+    height: auto;
+}
+
+.highlight-darkblue{
+    color: var(--darkest-blue);
+}
+
+.textsection{
+    font-weight: 400;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Phone/Tablet */
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1050px){
+    .loginlink{
+        font-size: 2em;
+        padding: 30px;
+    }
+    .logoutlink{
+        font-size: 2em;
+        padding: 30px;
+    }
+}
+
+/* Computers */
+
+@media only screen and (min-device-width: 1051px) {
+    .loginlink{
+        font-size: 2em;
+        padding: 20px;
+    }
+    .logoutlink{
+        font-size: 2em;
+        padding: 20px;
+    }
+    #logout-label{
+        margin-top: 25px;
+    }
+}
