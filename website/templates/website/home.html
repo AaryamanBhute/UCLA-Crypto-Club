@@ -1,8 +1,9 @@
 {% extends "website/base.html" %}
 
 {% block content %}
-{%if None == None%}
+{%if popup != None%}
 <div id="popup">
+    {% if popup == "login"%}
     <div class="confettilaunchers">
         <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti">
         <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti" style="transform: scaleX(-1);">
@@ -10,15 +11,28 @@
     <div class="closebutton">
         <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
     </div>
-    <p> You're Logged In!</p>
-    {% if popup == "login"%}
-    <p>login</p>
+    <p style="top: 30px;"> Congrats,</p>
+    <p style="bottom: 30px;"> You're Logged In!</p>
     {% elif popup == "invalidlogin" %}
-    <p>invalidlogin</p>
+    <div class="confettilaunchers">
+        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti">
+        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti" style="transform: scaleX(-1);">
+    </div>
+    <div class="closebutton">
+        <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
+    </div>
+    <p style="top: 30px;"> Sorry,</p>
+    <p style="bottom: 30px;"> Couldn't Log In!</p>
     {% elif popup == "logout"%}
-    <p>logout</p>
-    {% elif popup == "invalidlogin"%}
-    <p>invalidlogout</p>
+    <div class="confettilaunchers">
+        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti">
+        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti" style="transform: scaleX(-1);">
+    </div>
+    <div class="closebutton">
+        <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
+    </div>
+    <p style="top: 30px;"> See you soon,</p>
+    <p style="bottom: 30px;"> You're Logged Out!</p>
     {% endif %}
 </div>
 {% endif %}
