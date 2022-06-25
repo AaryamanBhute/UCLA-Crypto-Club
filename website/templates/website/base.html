@@ -21,51 +21,31 @@
     </head>
 
     <body>
-        <div class="off-computer" id="mobile-menu-button">
-            <input type="checkbox" id="checkbox1" class="checkbox1 visuallyHidden">
-                <label for="checkbox1">
-                    <div class="hamburger hamburger1">
-                        <span class="bar bar1"></span>
-                        <span class="bar bar2"></span>
-                        <span class="bar bar3"></span>
-                        <span class="bar bar4"></span>
-                    </div>
-                </label>
-        </div>
-        <div class="off-computer" id="mobile-profile-icon">
-            <a href="/login"><img src="https://i.ibb.co/jk35XJ6/empty-profile.png" alt="empty-profile" class="profile-img-mobile"></a>
-        </div>
-        <!-- Mobile Sidebar -->
-        <div id="mobile-sidebar" class="off-computer">
-            <div id="menu-list">
-                <div class="center"><a href="/login"><img src="https://i.ibb.co/jk35XJ6/empty-profile.png" alt="empty-profile" class="profile-img-mobile-sidebar"></a></div>
-                <div class="center"><img src="https://i.ibb.co/h9z1qzx/minilogo.png" alt="minilogo" id="navlogo-mobile"></div>
-                <a>Home</a>
-                <a>Leadership</a>
-                <a>Forums</a>
-                <a>Leaderboard</a>
-                <a href="/login">Start</a>
+        <div class="computer">
+            <div class="nav">
+                <div class="navlogo">
+                    <img src="{% static 'website/images/logo.png'%}" class="navimg">
+                </div>
+                <p class="hover-underline-animation">about</p>
+                <p class="hover-underline-animation">start</p>
+                <p class="hover-underline-animation">leadership</p>
+                <p class="hover-underline-animation">portfolio</p>
+                <p class="hover-underline-animation">leaderboards</p>
+                <div class="accountimgwrapper">
+                    <img  src="{% static 'website/images/account.png'%}" class="accountimg">
+                </div>
             </div>
         </div>
-        <div id="navbar">
-            <a href="/" class="align-left nav-logo-parent"><div class="center"><img src="https://i.ibb.co/h9z1qzx/minilogo.png" alt="minilogo" id="navlogo"></div></a>
-            <a href="/" class="off-phones"> HOME </a>
-            <a class="off-phones"> LEADERSHIP </a>
-            <a href="/forums" class="off-phones"> FORUMS </a>
-            <a class="off-phones"> LEADERBOARD </a>
-            <a class="off-phones" href="/login"> START </a>
-            <a href="/login" class="max-height align-right off-phones"> <img src="https://i.ibb.co/jk35XJ6/empty-profile.png" alt="empty-profile" class="profile-img"> </a>
+        
+        <div class="accountpopup">
+
         </div>
-        <!-- Page Content, varies by page -->
-        <div id="navbar-margin"></div>
-        {% block content %}
-        {% endblock content %}
-        <div style="height: 50px;"></div>
-        <!-- Scripts -->
-        <script src="{% static 'website/js/mobile-menu.js' %}"></script>
-        <script src="{% static 'website/js/closebutton.js' %}"></script>
-        <script src="{% static 'website/js/confetti.js' %}"></script>
-        <script src="{% static 'website/js/searchbuttons.js' %}"></script>
+
+        <div style="display: none;">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        
     </body>
 
 </html>
