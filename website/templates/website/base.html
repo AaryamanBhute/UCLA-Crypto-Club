@@ -13,6 +13,9 @@
         <!-- Party js -->
         <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
+        <!-- snap svg -->
+        <script src="{% static 'snap.svg-min.js'%}"></script>
+
     </head>
 
     <body>
@@ -37,7 +40,6 @@
         </div>
         <svg id="svg" viewBox="0 0 600 600">
         </svg>
-
         <div style="display: none;">
             {% block content %}
             {% endblock content %}
