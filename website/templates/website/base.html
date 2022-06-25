@@ -3,12 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/base.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/home.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/forums.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/hamburger.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/login.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/popup.css' %}">
-
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/graph.css' %}">
         <!-- Stops rotation on mobile devices / to be implemented in future -->
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
@@ -40,6 +35,8 @@
         <div class="accountpopup">
 
         </div>
+        <svg id="svg" viewBox="0 0 600 600">
+        </svg>
 
         <div style="display: none;">
             {% block content %}
@@ -47,5 +44,5 @@
         </div>
         
     </body>
-
+    <script src="{% static 'website/js/graph.js'%}"></script>
 </html>

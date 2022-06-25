@@ -28,6 +28,7 @@ body { margin: 0; padding: 0; }
     }
     .navlogo{
         margin-right: auto;
+        margin-left: 1%;
         height: 80%;
         width: auto;
         display: flex;
@@ -35,9 +36,17 @@ body { margin: 0; padding: 0; }
         align-items: center;
     }
     .navimg{
-        height: 100%;
+        height: 90%;
         width: auto;
-        filter: brightness(0) saturate(100%) invert(73%) sepia(73%) saturate(5246%) hue-rotate(161deg) brightness(94%) contrast(102%);
+        -webkit-transition: transform 250ms linear;
+        -ms-transition: transform 250ms linear;
+        transition: transform 250ms linear;
+    }
+    .navimg:hover{
+        transform: scale(1.1);
+        -webkit-transition: transform 250ms linear;
+        -ms-transition: transform 250ms linear;
+        transition: transform 250ms linear;
     }
     .nav p{
         font-size: 1.2em;
