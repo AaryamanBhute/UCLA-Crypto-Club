@@ -1,18 +1,19 @@
 from cmath import log
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout as lout
+from .models import *
 
 def logoutInvalids(request):
     if(not request.user.is_authenticated):
         return
-    print(request.user.email)
-    if(request.user.email.find("ucla.edu") == -1):
+    if(request.user.email.endswith("ucla.edu") == False):
         lout(request)
 
 # Create your views here.
 def home(request):
     logoutInvalids(request)
-
+    if(request.user.is_authenticated):
+        print(request.user.socialaccount_set.all()[0])
     #redirects lead to the home page, manage popup to inform user of the action that just occured
     try:
         popup = request.session['popup']
@@ -22,9 +23,27 @@ def home(request):
 
     return(render(request, 'website/home.html', {'popup': popup}))
 
-def forums(request):
+def forums(request, page = None):
+    if(page == None):
+        return(redirect('/forums/1'))
+
     logoutInvalids(request)
-    return(render(request, 'website/forums.html'))
+    nextpage = page + 1
+
+    if(page == 1):
+        lastpage = None
+    else:
+        lastpage = page - 1
+
+    posts = []
+    for i in range(page*10-9, page*10 + 1):
+        try: 
+            posts.append(Post.objects.get(id=i))
+        except:
+            nextpage = None
+            break
+
+    return(render(request, 'website/forums.html', {'page': page}))
 
 def loginpage(request):
     logoutInvalids(request)

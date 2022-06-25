@@ -1,13 +1,27 @@
 {% extends "website/base.html" %}
 
 {% block content %}
-<div id="searchmenu">
-    <div id="searchbar">
+<div class="center wrap">
+    <div class="searchmenuwrapper">
+        <div id="searchmenu">
+            <div class="searchwrapper">
+                <input type="text" placeholder="Search.." id="searchbar">
+            </div>
+        </div>
+        <div class="searchoptions">
+            <button class="searchbutton">New &#x2192; Old</button>
+            <button class="searchbutton">Old &#x2192; New</button>
+            <button class="searchbutton">Rating - High &#x2192; Low</button>
+            <button class="searchbutton">Rating - Low &#x2192; High</button>
+            <button class="searchbutton">Title - A &#x2192; Z</button>
+            <button class="searchbutton">Title - Z &#x2192; A</button>
+            <button class="searchbutton">Author - A &#x2192; Z</button>
+            <button class="searchbutton">Author - Z &#x2192; A</button>
+        </div>
     </div>
-    <ul id="searchselection">
-        <li> <div class="selectionbutton">.</div> Newest</li>
-        <li>Oldest</li>
-        <li>Rating</li>
-    </ul>
+    <div class="postdisplay">
+    </div>
 </div>
+
+
 {% endblock %}
