@@ -14,72 +14,146 @@ html{
 /* remove padding from screen*/
 body { margin: 0; padding: 0; }
 
-@media (max-width: 860px) {
-}
-@media (min-width: 861px) {
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    .computer{
+        display: none!important;        
+    }
+    .tablet{
+        display: none!important;        
+    }
     .nav{
-        display: flex;
+        height: 150px;
         width: 100%;
-        background-color: white;
-        height: 80px;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     }
-    .navlogo{
-        margin-right: auto;
-        margin-left: 1%;
-        height: 80%;
-        width: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .navlink{
+        display: none!important;
     }
-    .navimg{
-        height: 90%;
-        width: auto;
-        -webkit-transition: transform 250ms linear;
-        -ms-transition: transform 250ms linear;
-        transition: transform 250ms linear;
+    .hamburger{
+        transform: scale(1.7, 1.7);
     }
-    .navimg:hover{
-        transform: scale(1.1);
-        -webkit-transition: transform 250ms linear;
-        -ms-transition: transform 250ms linear;
-        transition: transform 250ms linear;
+    .not-mobile{
+        display: none!important;
     }
-    .nav p{
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-left: 4%;
-        margin-right: 4%;
-    }
-    .nav p:hover{
-        cursor: pointer;
+    .nav{
+        justify-content: center!important;
+        column-gap: auto;
     }
     .accountimgwrapper{
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
+        margin-right: 2%;
+        position: absolute;
+        right: 20px;
+    }
+    #banner{
+        margin-top: 150px;
+    }
+    #sidemenu{
+        position: fixed;
+        top: 0;
+        left: -80vw;
+        width: 80vw;
+        height: 100vh;
+        background-color: transparent;
+        z-index: 2;
+    }
+    #menuicon{
+        position: absolute;
+        left: 50px;
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
+    .computer{
+        display: none!important;        
+    }
+    .mobile{
+        display: none!important;        
+    }
+    .nav{
+        height: 100px;
+    }
+    .accountimgwrapper{
+        margin-right: 1.5%;
+    }
+    #banner{
+        margin-top: 100px;
+    }
+    
+}
+@media only screen and (min-device-width: 1001px) {
+    .mobile{
+        display: none!important;        
+    }
+    .tablet{
+        display: none!important;        
+    }
+    .nav{
+        height: 80px;
+    }
+    .accountimgwrapper{
         margin-right: 1%;
     }
-    .accountimg{
-        border-radius: 20px;
-        height: 40%;
-        padding: 10px;
-        width: auto;
-        -webkit-transition: background-color 250ms linear;
-        -ms-transition: background-color 250ms linear;
-        transition: background-color 250ms linear;
+    #banner{
+        margin-top: 80px;
     }
-    .accountimg:hover{
-        cursor: pointer;
-        background-color: #00a8e8;
-        -webkit-transition: background-color 250ms linear;
-        -ms-transition: background-color 250ms linear;
-        transition: background-color 250ms linear;
-    }
+}
+.nav{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.navlogo{
+    margin-left: 1%;
+    height: 80%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navimg{
+    height: 90%;
+    width: auto;
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.navimg:hover{
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.nav p{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.nav p:hover{
+    cursor: pointer;
+}
+.accountimgwrapper{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.accountimg{
+    border-radius: 20px;
+    height: 40%;
+    padding: 10px;
+    width: auto;
+    -webkit-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+}
+.accountimg:hover{
+    cursor: pointer;
+    background-color: #00a8e8;
+    -webkit-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
 }
 
 .hover-underline-animation {
@@ -103,4 +177,10 @@ body { margin: 0; padding: 0; }
   .hover-underline-animation:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+  .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

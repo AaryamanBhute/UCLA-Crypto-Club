@@ -1,68 +1,40 @@
 {% extends "website/base.html" %}
+{% load static %}
 
 {% block content %}
-{%if popup != None%}
-<div id="popup">
-    {% if popup == "login"%}
-    <div class="confettilaunchers">
-        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti" class="confetti1">
-        <img src="https://i.ibb.co/gt4rJ61/confetti.png" alt="confetti" style="transform: scaleX(-1);" class="confetti2">
+<div id="banner">
+    {% if user.is_authenticated %}
+    <p>Nice! You're logged in as {{user.first_name}}!</p>
+    <div>
+        <p>Not You?</p>
+        <p>Logout</p>
     </div>
-    <div class="closebutton">
-        <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
+    
+    {%else%}
+    <p>Looks like you're not logged in yet</p>
+    <div>
+        <p>Login</p>
     </div>
-    <p style="top: 30px;"> Congrats,</p>
-    <p style="bottom: 30px;"> You're Logged In!</p>
-    {% elif popup == "invalidlogin" %}
-    <div class="invalidimgwrapper">
-        <img src="https://i.ibb.co/0sN5rkB/invalid.png" alt="invalid">
-    </div>
-    <div class="closebutton">
-        <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
-    </div>
-    <p style="top: 30px;"> Sorry,</p>
-    <p style="bottom: 30px;"> Couldn't Log In!</p>
-    {% elif popup == "logout"%}
-    <div class="logoutimgwrapper">
-        <img src="https://i.ibb.co/sVjJccz/comebacksoon-adobe-express.png" alt="comebacksoon-adobe-express">
-    </div>
-    <div class="closebutton">
-        <img src="https://i.ibb.co/vhVCrWd/close.png" alt="close" class="closebutton">
-    </div>
-    <p style="top: 30px;"> See you soon,</p>
-    <p style="bottom: 30px;"> You're Logged Out!</p>
     {% endif %}
 </div>
-{% endif %}
-<div class="divider"></div>
-{% if user.is_authenticated %}
-<div class="sectiontitle-mini">Hey There {{ user.first_name }}! </div>
-{% else %}
-<div class="sectiontitle-mini">Click the Start tab to Log In! </div>
-{% endif %}
-<div class="sectiontitle">&#8212; Welcome to Crypto Club! &#8212;</div>
+<h1 class="header">&#8212; Welcome to <span class="accent">UCLA</span> Crypto! &#8212;</h1>
 <div class="entry">
-    <img src="https://i.ibb.co/HtzcfdF/logo.png" alt="logo" class="pageimg">
-    <div class="pagesidetext">
-        <p class="header">Why we're here!</p>
-        <p>
-            From a week-1 conversation about the GME and AMC short squeeze outside of
-            bcafe, we noticed that there were many finance clubs but they all missed
-            an increasingly prevalent aspect of finance: <strong class="highlight-gold">Crypto</strong>.
-            <br>
-            <br>
-            We are also looking to overcome a challenge that comes along with clubs in general:
-            <strong class="highlight-gold">accessibility</strong>. Most clubs require everyone
-            to meet at the same time at a place on campus. What happens if you aren't on campus?
-            What happens if you have a class at the meeting time? Another meeting? Thats part of
-            the inspiration for <strong class="highlight-gold">UCLA Crypto</strong>. A club available
-            24/7.
-            <br>
-            <br>
-            Who doesn't like a bit of friendly competition? In addition to being able to practice
-            trading crypto with dummy money, you can see who's portfolio is the largest on the leaderboard!
-            (You can choose to stay anonymous if you prefer)
-        </p>
+    <div id="basegallery">
+        <div class="basegalleryimgwrapper">
+            <img src="{% static 'website/images/crypto.jpg'%}" class="galleryimg">
+            <img src="{% static 'website/images/royce.jpg'%}" class="galleryimg">
+            <img src="{% static 'website/images/students.jpg'%}" class="galleryimg">
+            <img src="{% static 'website/images/tech.jpg'%}" class="galleryimg">
+        </div>
+    </div>
+    <div class="sidetext">
+        <p class="textleft"><span class="accent emphasize">24</span> Hours a Day</p>
+        <p class="textright"><span class="accent emphasize">7</span> Days a Week</p>
+        <p class="textleft"><span class="accent emphasize">52</span> Weeks a Year</p>
+        <p class="textright">A Club on <span class="accent emphasize">Your</span> Time!</p>
+        <button class="getstartedbutton">Get Started!</button>
     </div>
 </div>
+
+
 {% endblock %}

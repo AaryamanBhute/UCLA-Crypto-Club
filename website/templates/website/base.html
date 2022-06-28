@@ -3,7 +3,8 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/base.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/graph.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/home.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/hamburgers.css' %}">
         <!-- Stops rotation on mobile devices / to be implemented in future -->
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
@@ -16,34 +17,47 @@
     </head>
 
     <body>
-        <div class="computer">
-            <div class="nav">
-                <div class="navlogo">
-                    <img src="{% static 'website/images/logo.png'%}" class="navimg">
-                </div>
-                <p class="hover-underline-animation">about</p>
-                <p class="hover-underline-animation">start</p>
-                <p class="hover-underline-animation">leadership</p>
-                <p class="hover-underline-animation">portfolio</p>
-                <p class="hover-underline-animation">leaderboards</p>
-                <div class="accountimgwrapper">
-                    <img  src="{% static 'website/images/account.png'%}" class="accountimg">
-                </div>
+        <div class="nav">
+            <div class="navlogo not-mobile">
+                <img src="{% static 'website/images/logo.png'%}" class="navimg">
             </div>
+            <p class="hover-underline-animation navlink">about</p>
+            <p class="hover-underline-animation navlink">start</p>
+            <p class="hover-underline-animation navlink">leadership</p>
+            <p class="hover-underline-animation navlink">portfolio</p>
+            <p class="hover-underline-animation navlink">leaderboards</p>
+            <div id="menuicon" class="mobile container">
+                <button id="hamburgericon" class="hamburger hamburger--collapse" type="button">
+                    <span class="hamburger-box">
+                      <span class="hamburger-inner"></span>
+                    </span>
+                  </button>
+            </div>
+            <div class="navlogo mobile">
+                <img src="{% static 'website/images/logo.png'%}" class="navimg">
+            </div>
+            <div class="accountimgwrapper">
+                <img  src="{% static 'website/images/account.png'%}" class="accountimg">
+            </div>
+        </div>
+
+        <div id="sidemenu" class="mobile">
         </div>
         
         <div class="accountpopup">
 
         </div>
-        <svg id="svg" viewBox="0 0 600 600">
-        </svg>
-        <div style="display: none;">
+        
+        <div id="page">
             {% block content %}
             {% endblock content %}
         </div>
         
     </body>
-    <script src="{% static 'website/js/graph.js'%}"></script>
     <!-- snap svg -->
-    <script src="{% static 'wesbite/js/snap.js'%}"></script>
+    <script src="{% static 'website/js/snap.js'%}"></script>
+
+    <script src="{% static 'website/js/basegallery.js'%}"></script>
+    <script src="{% static 'website/js/nav.js'%}"></script>
+    <script src="{% static 'website/js/sidemenu.js'%}"></script>
 </html>
