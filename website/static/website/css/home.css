@@ -10,12 +10,22 @@
         width: 80%;
     }
     .sidetext{
-        width: 40%;
+        width: 70%;
+    }
+    .sidetext p{
+        font-size: 1.5em;
     }
     #banner{
         height: 200px;
         font-size: 2.5em;
     }
+    .header{
+        font-size: 3.3em!important;
+    }
+    .textheader{
+        font-size: 3em!important;
+    }
+    
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
     .entry{
@@ -25,8 +35,28 @@
     .sidetext{
         margin-top: 5%;
     }
+    .sidetext p{
+        font-size: 1.1em;
+    }
     #basegallery{
         width: 60%;
+    }
+    .sidetext{
+        width: 65%;
+    }
+    #banner{
+        height: 120px;
+        font-size: 1.5em;
+    }
+    .textheader{
+        font-size: 2.5em!important;
+    }
+    
+}
+@media only screen and (min-device-width: 1001px) {
+    #basegallery{
+        max-width: 45%;
+        width: 600px;
     }
     .sidetext{
         width: 40%;
@@ -35,19 +65,13 @@
         height: 120px;
         font-size: 1.5em;
     }
-}
-@media only screen and (min-device-width: 1001px) {
-    #basegallery{
-        max-width: 45%;
-        width: 600px;
+    .textheader{
+        font-size: 2.2em!important;
     }
-    .sidetext{
-        width: 30%;
+    .sidetext p{
+        font-size: 1.1em;
     }
-    #banner{
-        height: 120px;
-        font-size: 1.5em;
-    }
+    
 }
 
 
@@ -82,21 +106,27 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    column-gap: 8%;
+    column-gap: 5%;
 }
 .sidetext{
+    margin-top: 10px;
+    min-width: 35%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     height: fit-content;
 }
+.centertext{
+    text-align: center!important;
+}
 .sidetext p{
     width: 100%;
-    font-size: 1.8em;
-    font-weight: 700;
-    font-style: italic;
+    font-weight: 600;
     margin: 15px;
+}
+.textheader{
+    font-weight: 800!important;
+    text-align: center;
 }
 .getstartedbutton{
     background-color: white;

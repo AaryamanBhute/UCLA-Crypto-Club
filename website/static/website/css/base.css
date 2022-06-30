@@ -52,12 +52,44 @@ body { margin: 0; padding: 0; }
         left: -80vw;
         width: 80vw;
         height: 100vh;
-        background-color: transparent;
-        z-index: 2;
+        background-color: var(--accent);
+        z-index: 5;
+
+        display: flex;
+        justify-content: center;
+        color: white;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    #sidemenu p{
+        width: 100%;
+        font-size: 4.5em;
+        font-weight: 700;
     }
     #menuicon{
-        position: absolute;
+        position: fixed;
         left: 50px;
+        top: 50px;
+        z-index: 5;
+    }
+    .linkwrapper{
+        height: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        text-indent: 20%;
+        align-content: space-between;
+    }
+    #accountpopup{
+        top: 195px;
+        width: 600px;
+        height: 800px;
+        right: 45px;
+    }
+    .corner{
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        top: -23px;
     }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
@@ -76,6 +108,18 @@ body { margin: 0; padding: 0; }
     #banner{
         margin-top: 100px;
     }
+    #accountpopup{
+        top: 130px;
+        width: 450px;
+        height: 600px;
+        right: 23px;
+    }
+    .corner{
+        width: 30px;
+        height: 30px;
+        right: 6.5px;
+        top: -15px;
+    }
     
 }
 @media only screen and (min-device-width: 1001px) {
@@ -93,6 +137,18 @@ body { margin: 0; padding: 0; }
     }
     #banner{
         margin-top: 80px;
+    }
+    #accountpopup{
+        top: 115px;
+        width: 350px;
+        height: 450px;
+        right: 20px;
+    }
+    .corner{
+        width: 30px;
+        height: 30px;
+        right: 6.5px;
+        top: -15px;
     }
 }
 .nav{
@@ -184,3 +240,21 @@ body { margin: 0; padding: 0; }
     justify-content: center;
     align-items: center;
   }
+
+  #accountpopup{
+    position: fixed;
+
+    background-color: white;
+    z-index: 4;
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.corner{
+    position: absolute;
+    
+    transform: rotate(45deg);
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    clip-path: inset(-8px 0px 0px -8px);
+    border: none;
+}
