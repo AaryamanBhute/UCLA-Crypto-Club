@@ -4,16 +4,15 @@
 {% block content %}
 <div id="banner">
     {% if user.is_authenticated %}
-    <p>Nice! You're logged in as {{user.first_name}}!</p>
+    <p>Nice! You're logged in as {{user.first_name}}! Not You?</p>
     <div>
-        <p>Not You?</p>
-        <p>Logout</p>
+        <p class="logoutbutton">Logout</p>
     </div>
     
     {%else%}
     <p>Looks like you're not logged in yet</p>
     <div>
-        <p>Login</p>
+        <p class="loginbutton">Login</p>
     </div>
     {% endif %}
 </div>

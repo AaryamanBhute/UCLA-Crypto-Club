@@ -183,10 +183,33 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 #banner > div p{
     width: fit-content;
     text-align: center;
     margin: 0;
+}
+.loginbutton, .logoutbutton{
+    color: white;
+    font-style: italic;
+    font-size: 1.1em;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.loginbutton:hover, .logoutbutton:hover{
+    color: var(--green);
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
 }

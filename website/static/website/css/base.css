@@ -4,15 +4,17 @@
 
 :root{
     --accent: #00a8e8;
+    --green: #228B22;
 }
 
 /* set font for website*/
 html{
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 /* remove padding from screen*/
-body { margin: 0; padding: 0; }
+body { margin: 0; padding: 0;}
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
     .computer{
@@ -53,7 +55,7 @@ body { margin: 0; padding: 0; }
         width: 80vw;
         height: 100vh;
         background-color: var(--accent);
-        z-index: 5;
+        z-index: 6;
 
         display: flex;
         justify-content: center;
@@ -63,14 +65,14 @@ body { margin: 0; padding: 0; }
     }
     #sidemenu p{
         width: 100%;
-        font-size: 4.5em;
+        font-size: 3.5em;
         font-weight: 700;
     }
     #menuicon{
         position: fixed;
         left: 50px;
         top: 50px;
-        z-index: 5;
+        z-index: 6;
     }
     .linkwrapper{
         height: 60%;
@@ -81,8 +83,8 @@ body { margin: 0; padding: 0; }
     }
     #accountpopup{
         top: 195px;
-        width: 600px;
-        height: 800px;
+        width: fit-content;
+        height: fit-content;
         right: 45px;
     }
     .corner{
@@ -90,6 +92,32 @@ body { margin: 0; padding: 0; }
         height: 50px;
         right: 10px;
         top: -23px;
+    }
+    .content{
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .toggleswitch{
+        transform: scale(1.8);
+        margin-top: 50px;
+    }
+    .savebuttonwrapper{
+        margin-top: 40px;
+    }
+    #popup{
+        width: fit-content;
+        background-color: white;
+        z-index: 5;
+    }
+    .closebutton{
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    #popup p{
+        margin-left: 25px;
+        margin-right: 25px;
+        font-size: 2.5em;
     }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
@@ -110,8 +138,8 @@ body { margin: 0; padding: 0; }
     }
     #accountpopup{
         top: 130px;
-        width: 450px;
-        height: 600px;
+        width: fit-content;
+        height: fit-content;
         right: 23px;
     }
     .corner{
@@ -120,7 +148,25 @@ body { margin: 0; padding: 0; }
         right: 6.5px;
         top: -15px;
     }
-    
+    .content{
+        margin-bottom: 15px;
+    }
+    .toggleswitch{
+        transform: scale(1.4);
+        margin-top: 40px;
+    }
+    .savebuttonwrapper{
+        margin-top: 20px;
+    }
+    .closebutton{
+        width: 40px;
+        height: 40px;
+        margin: 20px;
+    }
+    #popup p{
+        margin-left: 25px;
+        font-size: 1.5em;
+    }
 }
 @media only screen and (min-device-width: 1001px) {
     .mobile{
@@ -140,8 +186,8 @@ body { margin: 0; padding: 0; }
     }
     #accountpopup{
         top: 115px;
-        width: 350px;
-        height: 450px;
+        width: fit-content;
+        height: fit-content;
         right: 20px;
     }
     .corner{
@@ -149,6 +195,28 @@ body { margin: 0; padding: 0; }
         height: 30px;
         right: 6.5px;
         top: -15px;
+    }
+    .content{
+        margin-bottom: 15px;
+    }
+    .toggleswitch{
+        transform: scale(1.2);
+        margin-top: 40px;
+    }
+    .savebuttonwrapper{
+        margin-top: 20px;
+    }
+    #popup{
+        min-height: 50px;
+    }
+    .closebutton{
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+    #popup p{
+        margin: 20px;
+        font-size: 1.2em;
     }
 }
 .nav{
@@ -160,6 +228,7 @@ body { margin: 0; padding: 0; }
     position: fixed;
     top: 0;
     z-index: 2;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
 .navlogo{
     margin-left: 1%;
@@ -243,18 +312,107 @@ body { margin: 0; padding: 0; }
 
   #accountpopup{
     position: fixed;
-
+    display: flex;
+    justify-content: center;
     background-color: white;
     z-index: 4;
     
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
 }
 .corner{
     position: absolute;
     
     transform: rotate(45deg);
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    clip-path: inset(-8px 0px 0px -8px);
+    box-shadow: rgba(0, 0, 0, 0.24) -.5px -.5px 0px;
     border: none;
+}
+#accountpopup p{
+    font-weight: 600;
+}
+.content{
+    display: inline;
+    justify-content: center;
+}
+.content p{
+    width: 100%;
+    text-align: center;
+}
+.loginbutton1, .logoutbutton1{
+    font-style: italic;
+    font-size: 1.3em;
+    color: black;
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.loginbutton1:hover, .logoutbutton1:hover{
+    color: var(--green);
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.contentwrapper{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.savebuttonwrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+}
+.savebuttonwrapper:hover{
+    background-color: var(--accent);
+    color: white;
+    cursor: pointer;
+}
+.savebutton{
+    margin: 0;
+    padding: 10px;
+    
+    font-size: 1.2em;
+}
+
+#popup{
+    height: fit-content;
+    display: flex;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    align-items: center;
+    background-color: white;
+    z-index: 5;
+}
+
+#popup p{
+    font-weight: 900;
+}
+
+.closebutton{
+    filter: brightness(0) saturate(100%);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+
+.closebutton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+    filter:  brightness(0) saturate(100%) invert(9%) sepia(97%) saturate(5047%) hue-rotate(358deg) brightness(96%) contrast(112%);
 }

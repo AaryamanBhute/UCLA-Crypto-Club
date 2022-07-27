@@ -1,10 +1,14 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/base.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/home.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/hamburgers.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/switch.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/loading.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/portfolio.css' %}">
         <!-- Stops rotation on mobile devices / to be implemented in future -->
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
@@ -15,10 +19,13 @@
         <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
     </head>
-
+    
     <body>
+        <div id="hider"></div>
+        <div class="centerer" id="loading"><div class="lds-facebook" ><div></div><div></div><div></div></div></div>
         <div id="sidemenu" class="mobile">
             <div class="linkwrapper">
+                <p>home</p>
                 <p>about</p>
                 <p>start</p>
                 <p>leadership</p>
@@ -26,8 +33,39 @@
                 <p>leaderboards</p>
             </div>
         </div>
+        {% if popup != None%}
+        <div id="popup">
+            <p>{{popup}}</p>
+            <img src="{% static 'website/images/closebutton.png'%}" class="closebutton">
+        </div>
+        {% endif %}
         <div id="accountpopup">
             <div class="corner"></div>
+            <div class="contentwrapper">
+                <div class="content">
+                    {% if user.is_authenticated %}
+                    <p>OPTIONS</p>
+                    <div class="anonoption">
+                        <p>Stay Anonymous?</p>
+                        <div class="toggleswitch">
+                            <div class="button r" id="button-1">
+                                <input type="checkbox" class="checkbox">
+                                <div class="knobs"></div>
+                                <div class="layer"></div>
+                              </div>
+                        </div>
+                        <div class="savebuttonwrapper">
+                            <p class="savebutton">Save</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p>Changing Settings?</p>
+                    <p>First you gotta</p>
+                    <p class="loginbutton1">Login</p>
+                    {% endif %}
+                </div> 
+            </div>
+            
         </div>
         <div class="nav">
             <div class="navlogo not-mobile">
@@ -54,22 +92,25 @@
               </button>
         </div>
         
-        
-        <div class="accountpopup">
-
-        </div>
-        
         <div id="page">
             {% block content %}
             {% endblock content %}
         </div>
         
     </body>
+    <script>
+        var loginurl = "{% provider_login_url 'google'%}?next=/loginattempt";
+        var is_anonymous = "{{anonymous}}";
+    </script>
+
     <!-- snap svg -->
     <script src="{% static 'website/js/snap.js'%}"></script>
 
     <script src="{% static 'website/js/basegallery.js'%}"></script>
-    <script src="{% static 'website/js/nav.js'%}"></script>
+    <script src="{% static 'website/js/setup.js'%}"></script>
+    <!--<script src="{% static 'website/js/nav.js'%}"></script>-->
     <script src="{% static 'website/js/sidemenu.js'%}"></script>
     <script src="{% static 'website/js/accountpopup.js'%}"></script>
+    <script src="{% static 'website/js/alignment.js'%}"></script>
+    <script src="{% static 'website/js/buttoning.js'%}"></script>
 </html>
