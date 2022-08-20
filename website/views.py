@@ -1,7 +1,16 @@
 from cmath import log
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout as lout
+from django.conf import settings
 from .models import *
+import pyEX as p
+
+class Asset:
+    def __init__(self, coin=None, amt=None, img=None, val=None):
+        self.coin = coin
+        self.amt = amt
+        self.img = img
+        self.val = val
 
 def logoutInvalids(request):
     if(not request.user.is_authenticated):
@@ -18,11 +27,8 @@ def getUserInfo(request):
         user_info = UserInfo.objects.create_user_info(request.user.email)
     return(user_info)
 
-# Create your views here.
-def home(request):
-    logoutInvalids(request)
-    user_info = getUserInfo(request)
-    #redirects lead to the home page, manage popup to inform user of the action that just occured
+def makeDict(request):
+    user_info = getUserInfo(request)    
     try:
         popup = request.session['popup']
     except:
@@ -30,24 +36,31 @@ def home(request):
     request.session['popup'] = None
     dic = {'popup': popup}
     if(user_info != None):
+        assets = []
+        for e in user_info.assets.split(";"):
+            divider = e.find("/")
+            #coin = e[:divider]
+            #print(coin)
+            #d = settings.IEX.quote(symbol=coin)
+            assets.append(Asset(e[:divider], e[divider+1:]))
         dic['anonymous'] = user_info.anonymous
+        dic['money'] = user_info.cash
+        dic['assets'] = assets
     else:
         dic['anonymous'] = None
+        dic['money'] = None
+        dic['assets'] = None
+    return(dic)
+
+# Create your views here.
+def home(request):
+    logoutInvalids(request)
+    dic = makeDict(request)
     return(render(request, 'website/home.html', dic))
 
 def portfoliopage(request):
     logoutInvalids(request)
-    user_info = getUserInfo(request)
-    try:
-        popup = request.session['popup']
-    except:
-        popup = None
-    request.session['popup'] = None
-    dic = {'popup': popup}
-    if(user_info != None):
-        dic['anonymous'] = user_info.anonymous
-    else:
-        dic['anonymous'] = None
+    dic = makeDict(request)
     return(render(request, 'website/portfolio.html', dic))
 
 def logoutpage(request):
@@ -88,14 +101,5 @@ def about(request):
     logoutInvalids(request)
     user_info = getUserInfo(request)
     #redirects lead to the home page, manage popup to inform user of the action that just occured
-    try:
-        popup = request.session['popup']
-    except:
-        popup = None
-    request.session['popup'] = None
-    dic = {'popup': popup}
-    if(user_info != None):
-        dic['anonymous'] = user_info.anonymous
-    else:
-        dic['anonymous'] = None
+    dic = makeDict(request)
     return(render(request, 'website/about.html', dic))

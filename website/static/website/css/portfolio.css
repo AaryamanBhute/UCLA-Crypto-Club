@@ -1,0 +1,105 @@
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    #assets{
+        max-height: calc(100vh - 150px);
+        overflow-y: scroll;
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
+    #assets{
+        max-height: calc(100vh - 100px);
+        overflow-y: scroll;
+    }
+}
+@media only screen and (min-device-width: 1001px) {
+    .portfioliobubble{
+        padding: 20px;
+        margin: 10px;
+    }
+    .asseticon{
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+    }
+    .asset{
+        column-gap: 15px;
+        padding: 10px;
+    }
+    #assets .title{
+        font-size: 2em;
+    }
+    .asset p{
+        font-size: 1.5em;
+    }
+    #assets{
+        max-height: calc(100vh - 140px);
+        overflow-y: scroll;
+    }
+}
+
+.asset p{
+    white-space: nowrap;
+}
+
+.portfoliowrapper{
+    width: 100%;
+}
+
+.portfioliobubble{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+}
+
+.portfioliobubble p{
+    margin: 0;
+    padding: 0;
+}
+
+#assets{
+    width: min-content;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#assets{
+    text-align: center;
+    font-weight: 900;
+}
+.title{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-weight: 900;
+}
+
+#assetcollection{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: min-content;
+}
+
+.asset{
+    margin: 5px 5px;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.asseticon{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.bold{
+    font-weight: 900;
+}
+
+.breaker{
+    display: block;
+    width: 100%;
+    height: 0;
+  }

@@ -213,3 +213,6 @@
     -ms-transition: transform 250ms linear;
     transition: transform 250ms linear;
 }
+#money{
+    float: right;
+}

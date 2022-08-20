@@ -45,7 +45,7 @@ body { margin: 0; padding: 0;}
         position: absolute;
         right: 20px;
     }
-    #banner{
+    #page{
         margin-top: 150px;
     }
     #sidemenu{
@@ -133,7 +133,7 @@ body { margin: 0; padding: 0;}
     .accountimgwrapper{
         margin-right: 1.5%;
     }
-    #banner{
+    #page{
         margin-top: 100px;
     }
     #accountpopup{
@@ -181,7 +181,7 @@ body { margin: 0; padding: 0;}
     .accountimgwrapper{
         margin-right: 1%;
     }
-    #banner{
+    #page{
         margin-top: 80px;
     }
     #accountpopup{
@@ -415,4 +415,8 @@ body { margin: 0; padding: 0;}
     -ms-transition: transform 250ms linear;
     transition: transform 250ms linear;
     filter:  brightness(0) saturate(100%) invert(9%) sepia(97%) saturate(5047%) hue-rotate(358deg) brightness(96%) contrast(112%);
+}
+#page{
+    display: flex;
+    flex-wrap: wrap;
 }

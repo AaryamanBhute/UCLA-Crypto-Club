@@ -1,8 +1,33 @@
 {% extends "website/base.html" %}
 {% load static %}
-<div id="portfoliowrapper">
-
-</div>
 
 {% block content %}
+<div class="portfoliowrapper">
+    <div id="money" class="portfioliobubble">
+        <p>Cash Available: {{money}}$</p>
+    </div> 
+    <div id="assets" class="portfioliobubble">
+        <p class="title">Assets</p>
+        <div class="breaker"></div>
+        <div id="assetcollection">
+            {% for asset in assets %}
+            <div class="asset">
+                <img src="https://media.istockphoto.com/vectors/apple-vector-id1148854779?k=20&m=1148854779&s=612x612&w=0&h=YoEJv6A1xDIg9KqId4AJciIy4avs7qcDhXD4AyzphBk=" class="asseticon">
+                <p class="assetname"><span class="bold accent">{{asset.coin}}</span></p>
+                <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
+                <p class="value"><span class="bold">Value:</span> 800$</p>
+            </div>
+            {% endfor %}
+            {% for asset in assets %}
+            <div class="asset">
+                <img src="https://media.istockphoto.com/vectors/apple-vector-id1148854779?k=20&m=1148854779&s=612x612&w=0&h=YoEJv6A1xDIg9KqId4AJciIy4avs7qcDhXD4AyzphBk=" class="asseticon">
+                <p class="assetname"><span class="bold accent">{{asset.coin}}</span></p>
+                <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
+                <p class="value"><span class="bold">Value:</span> 800$</p>
+            </div>
+            {% endfor %}    
+        </div>
+    </div> 
+</div>
+
 {% endblock %}
