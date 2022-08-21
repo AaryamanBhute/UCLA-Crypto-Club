@@ -3,31 +3,79 @@
 
 {% block content %}
 <div class="portfoliowrapper">
-    <div id="money" class="portfioliobubble">
-        <p>Cash Available: {{money}}$</p>
-    </div> 
     <div id="assets" class="portfioliobubble">
+         
         <p class="title">Assets</p>
         <div class="breaker"></div>
-        <div id="assetcollection">
-            {% for asset in assets %}
+        <p class="note"><span class="red">To sell Asset, Click Icon</span></p>
+        <div id="assetcollection" class="ownedassets">
+            {% for asset in assets reversed%}
             <div class="asset">
-                <img src="https://media.istockphoto.com/vectors/apple-vector-id1148854779?k=20&m=1148854779&s=612x612&w=0&h=YoEJv6A1xDIg9KqId4AJciIy4avs7qcDhXD4AyzphBk=" class="asseticon">
-                <p class="assetname"><span class="bold accent">{{asset.coin}}</span></p>
+                <img src="{{asset.img}}" class="asseticon">
+                <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
                 <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
-                <p class="value"><span class="bold">Value:</span> 800$</p>
+                <p class="value"><span class="bold">Value:</span> <span class="green">{{asset.val}}$</span></p>
             </div>
             {% endfor %}
-            {% for asset in assets %}
-            <div class="asset">
-                <img src="https://media.istockphoto.com/vectors/apple-vector-id1148854779?k=20&m=1148854779&s=612x612&w=0&h=YoEJv6A1xDIg9KqId4AJciIy4avs7qcDhXD4AyzphBk=" class="asseticon">
-                <p class="assetname"><span class="bold accent">{{asset.coin}}</span></p>
-                <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
-                <p class="value"><span class="bold">Value:</span> 800$</p>
-            </div>
-            {% endfor %}    
         </div>
-    </div> 
+    </div>
+    <div id="buy" class="portfioliobubble">
+        <p class="title">Market</p>
+        <div class="breaker"></div>
+        <div class="wrap">
+            <div class="search">
+               <input type="text" class="searchTerm" placeholder="What are you looking for?">
+               <button type="submit" class="searchButton">
+                   <i class="fa fa-search"></i>
+               </button>
+           </div>
+       </div>
+       <div class="breaker"></div>
+       <p class="subtitle">Top Cryptos</p>
+       <div class="breaker"></div>
+       <p class="note"><span class="green">Click Icons to Buy!</span></p>
+       <div class="breaker"></div>
+        <div id="assetcollection" class="quickbuymenu">
+            {% for asset in topCryptos reversed%}
+                <div class="asset">
+                    <img src="{{asset.img}}" class="asseticon">
+                    <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
+                    <p class="value"><span class="bold">Cost/Per: </span><span class="green">{{asset.val}}$</span></p>
+                </div>
+            {% endfor %} 
+        </div>
+    </div>
+    <div id="instructions" class="portfioliobubble">
+        <p class="title"><span class="accent">Hello!</span></p>
+        <div class="breaker"></div>
+        <div id="instructioncollection">
+            <p>Welcome to your portfolio, here you can see your
+                cryptocurrency assets as well as cash you have liquid.
+            </p>
+            <p>
+                You can also buy and sell assets here and try to make
+                trades in order to increase the total value of your
+                portfolio.
+            </p>
+            <p>
+                Remember to have fun while learning and experimenting with
+                trading here and try to get to the top of the leaderboards!
+            </p>
+        </div>
+    </div>
+    <div id="summary" class="portfioliobubble">
+        <p class="title">Summary</p>
+        <div class="breaker"></div>
+        <div id="money" class="portfioliobubble">
+            <p>Cash Available: <span class="green">{{money}}$</span></p>
+        </div>
+        <div id="money" class="portfioliobubble">
+            <p>Total Asset Value: <span class="green">{{totalAssetValue}}$</span></p>
+        </div>
+        <div id="money" class="portfioliobubble">
+            <p>Portfolio Value: <span class="green">{{portfolioValue}}$</span></p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

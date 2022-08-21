@@ -14,6 +14,3 @@ class UserInfo(models.Model):
     assets = models.TextField()
     cash = models.IntegerField()
     objects = UserInfoManager()
-
-class LastApiAccess(models.Model):
-    time = models.DateTimeField(default=datetime.now)

@@ -24,6 +24,8 @@ import os
 
 import pyEX as p
 
+from coincap import CoinCap
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,6 +37,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("secret_key")
 
 API_KEY = os.getenv("crypto_api_key")
+
+COINCAP = CoinCap()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

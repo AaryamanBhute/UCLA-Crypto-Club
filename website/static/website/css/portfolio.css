@@ -1,16 +1,18 @@
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
-    #assets{
-        max-height: calc(100vh - 150px);
-        overflow-y: scroll;
+    .portfoliowrapper{
+        height: calc(100vh - 150px);
     }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
-    #assets{
-        max-height: calc(100vh - 100px);
-        overflow-y: scroll;
+    .portfoliowrapper{
+        height: calc(100vh - 100px);
     }
 }
 @media only screen and (min-device-width: 1001px) {
+    .portfoliowrapper{
+        height: calc(100vh - 100px);
+        padding: 10px;
+    }
     .portfioliobubble{
         padding: 20px;
         margin: 10px;
@@ -24,15 +26,54 @@
         column-gap: 15px;
         padding: 10px;
     }
-    #assets .title{
+    .title{
         font-size: 2em;
     }
     .asset p{
         font-size: 1.5em;
     }
     #assets{
-        max-height: calc(100vh - 140px);
-        overflow-y: scroll;
+        flex-grow: 1;
+        grid-area: assets;
+    }
+    #money{
+        top: 90px;
+        left: 10px;
+    }
+    .search{
+        min-width: 20vw;
+    }
+    #instructions{
+        min-width: 18vw;
+        grid-area: instruction;
+    }
+    #instructioncollection p{
+        margin: 10px;
+    }
+    .subtitle{
+        font-size: 1.5em;
+    }
+    .note{
+        margin-top: 10px!important;
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    #buy{
+        grid-area: buy;
+    }
+    .portfoliowrapper{
+        grid-template-areas:
+        'instruction instruction assets assets assets assets buy buy buy'
+        'instruction instruction assets assets assets assets buy buy buy'
+        'summary summary assets assets assets assets buy buy buy'
+        'summary summary assets assets assets assets buy buy buy';
+    }
+    .sellasset{
+        width: 50px;
+        height: 10px;
+    }
+    .quickbuymenu{
+        margin-top: 20px;
     }
 }
 
@@ -42,14 +83,20 @@
 
 .portfoliowrapper{
     width: 100%;
+    display: grid;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-auto-rows: minmax(0, 1fr);
 }
 
 .portfioliobubble{
     display: flex;
-    width: fit-content;
-    height: fit-content;
+    max-height: 100%;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-radius: 10px;
+    overflow-y: auto;
 }
 
 .portfioliobubble p{
@@ -57,16 +104,16 @@
     padding: 0;
 }
 
-#assets{
-    width: min-content;
+#buy, #assets, #instructions, #summary  {
+    display: flex;
+    text-align: center;
     flex-wrap: wrap;
     justify-content: center;
+    font-weight: 900;
+    overflow-y: auto;
+    align-content: flex-start;
 }
 
-#assets{
-    text-align: center;
-    font-weight: 900;
-}
 .title{
     width: fit-content;
     height: fit-content;
@@ -74,24 +121,41 @@
     font-weight: 900;
 }
 
+.subtitle{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
 #assetcollection{
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    width: min-content;
+    display: block;
+    width: fit-content;
+    overflow-x: auto;
+    white-space: nowrap;
+    transform: rotateX(180deg);
+}
+
+.flip{
+    transform: rotateX(180deg);
 }
 
 .asset{
-    margin: 5px 5px;
     display: flex;
-    width: fit-content;
     align-items: center;
     border-radius: 10px;
+    transform: rotateX(180deg);
 }
 
 .asseticon{
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border: 2px solid var(--accent);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    padding: 5px;
+}
+.asseticon:hover{
+    border: 2px solid var(--green);
 }
 
 .bold{
@@ -102,4 +166,106 @@
     display: block;
     width: 100%;
     height: 0;
+  }
+
+  #money{
+    font-weight: 800;
+    background-color: white;
+  }
+
+  .green{
+    color: var(--green)!important;
+  }
+
+  #instructioncollection{
+    font-weight: 500;
+    font-size: 1em;
+    width: 100%;
+    text-align: start;
+  }
+
+#buycollection{
+    display: flex;
+    width: min-content;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#summary{
+    grid-area: summary;
+}
+
+
+
+
+
+
+
+
+
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.red{
+    color: red;
+}
+
+/*Resize the wrap to see the search bar change!*/
+
+
+/* width */
+::-webkit-scrollbar{
+    width: 10px;
+  }
+  ::-webkit-scrollbar:horizontal{
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark-accent);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
