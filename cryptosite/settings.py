@@ -34,9 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("secret_key")
 
-IEX_API_KEY = os.getenv("iex_key")
-
-IEX = p.Client(api_token=IEX_API_KEY, version='stable')
+API_KEY = os.getenv("crypto_api_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

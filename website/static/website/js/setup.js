@@ -1,5 +1,6 @@
 
 $( document ).ready(function() {
+    console.log(is_anonymous);
     if(is_anonymous === "False"){
         $("#button-1 input").first().prop("checked", true)
     }

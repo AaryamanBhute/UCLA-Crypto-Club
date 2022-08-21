@@ -3,7 +3,9 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import logout as lout
 from django.conf import settings
 from .models import *
-import pyEX as p
+from django.utils import timezone
+import time
+import requests
 
 class Asset:
     def __init__(self, coin=None, amt=None, img=None, val=None):
@@ -11,6 +13,45 @@ class Asset:
         self.amt = amt
         self.img = img
         self.val = val
+
+def strToDatetime(s):
+    i = s.find("-")
+    year = s[:i]
+    s = s[i+1:]
+    i = s.find("-")
+    month = s[:i]
+    s = s[i+1:]
+    i = s.find(" ")
+    day = s[:i]
+    s = s[i+1:]
+    i = s.find(":")
+    hour = s[:i]
+    s = s[i+1:]
+    i = s.find(":")
+    minute = s[:i]
+    s = s[i+1:]
+    second = s
+    try:
+        second = second[:second.find(".")]
+    except:
+        pass
+    return(datetime(int(year), int(month), int(day), int(hour), int(minute), int(second), 0))
+
+def timeSinceLastAccess():
+    time = LastApiAccess.objects.all()[0]
+    last_access = str(time.time)
+    last_access = last_access[:last_access.find("+")]
+    now = str(timezone.now())
+    now = now[:now.find("+")]
+    last_access_datetime = strToDatetime(last_access)
+    now_datetime = strToDatetime(now)
+    tdelta = now_datetime - last_access_datetime
+    return(tdelta.total_seconds())
+
+def updateLastAccess():
+    time = LastApiAccess.objects.all()[0]
+    time.time = timezone.now()
+    time.save()
 
 def logoutInvalids(request):
     if(not request.user.is_authenticated):
@@ -27,40 +68,49 @@ def getUserInfo(request):
         user_info = UserInfo.objects.create_user_info(request.user.email)
     return(user_info)
 
-def makeDict(request):
-    user_info = getUserInfo(request)    
+def makeDict(request, needsAssetInfo=False):
+    user_info = getUserInfo(request)
     try:
         popup = request.session['popup']
     except:
         popup = None
     request.session['popup'] = None
     dic = {'popup': popup}
+    if(needsAssetInfo):
+        if(user_info != None):
+            assets = []
+            for e in user_info.assets.split(";"):
+                divider = e.find("/")
+                assets.append(Asset(e[:divider], e[divider+1:]))
+            dic['assets'] = assets
+        else:
+            dic['assets'] = None
+    else:
+        dic['assets'] = None
     if(user_info != None):
-        assets = []
-        for e in user_info.assets.split(";"):
-            divider = e.find("/")
-            #coin = e[:divider]
-            #print(coin)
-            #d = settings.IEX.quote(symbol=coin)
-            assets.append(Asset(e[:divider], e[divider+1:]))
         dic['anonymous'] = user_info.anonymous
         dic['money'] = user_info.cash
-        dic['assets'] = assets
     else:
         dic['anonymous'] = None
         dic['money'] = None
-        dic['assets'] = None
     return(dic)
 
 # Create your views here.
 def home(request):
     logoutInvalids(request)
     dic = makeDict(request)
+
     return(render(request, 'website/home.html', dic))
 
 def portfoliopage(request):
     logoutInvalids(request)
-    dic = makeDict(request)
+    while(timeSinceLastAccess() < 1):
+        time.sleep(0.5)
+    updateLastAccess()
+    if(not request.user.is_authenticated):
+        request.session['popup'] = "Log In First!"
+        return(redirect('/'))
+    dic = makeDict(request, True)
     return(render(request, 'website/portfolio.html', dic))
 
 def logoutpage(request):

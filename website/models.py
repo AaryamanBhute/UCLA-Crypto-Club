@@ -1,6 +1,6 @@
 from pyexpat import model
 from django.db import models
-
+from datetime import datetime
 
 class UserInfoManager(models.Manager):
     def create_user_info(self, e, c=0, a="", anon=False):
@@ -15,3 +15,5 @@ class UserInfo(models.Model):
     cash = models.IntegerField()
     objects = UserInfoManager()
 
+class LastApiAccess(models.Model):
+    time = models.DateTimeField(default=datetime.now)

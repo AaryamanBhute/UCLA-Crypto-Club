@@ -15,9 +15,6 @@
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-        <!-- Party js -->
-        <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
-
     </head>
     
     <body>
@@ -96,8 +93,7 @@
             {% block content %}
             {% endblock content %}
         </div>
-        
-    </body>
+    
     <script>
         var loginurl = "{% provider_login_url 'google'%}?next=/loginattempt";
         var is_anonymous = "{{anonymous}}";
@@ -113,4 +109,6 @@
     <script src="{% static 'website/js/accountpopup.js'%}"></script>
     <script src="{% static 'website/js/alignment.js'%}"></script>
     <script src="{% static 'website/js/buttoning.js'%}"></script>
+
+    </body>
 </html>
