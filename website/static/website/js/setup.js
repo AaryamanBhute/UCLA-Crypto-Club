@@ -1,6 +1,5 @@
 
 $( document ).ready(function() {
-    console.log(is_anonymous);
     if(is_anonymous === "False"){
         $("#button-1 input").first().prop("checked", true)
     }
@@ -10,8 +9,6 @@ $( document ).ready(function() {
     else{
         $("#popup").css("color", "green")
     }
-    console.log(window.location.href);
-    console.log(window.location.origin);
     if(window.location.href === window.location.origin + "/"){
         
         $('html, body').css('overflowY', 'hidden');

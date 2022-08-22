@@ -6,6 +6,7 @@ from django.templatetags.static import static
 from django.conf import settings
 from .models import *
 from django.utils import timezone
+from django.http import JsonResponse
 import time
 import requests
 
@@ -42,10 +43,11 @@ def getUserInfo(request):
     return(user_info)
 
 def getInfo(name):
-    r = requests.get("http://api.coincap.io/v2/assets/{n}".format(n=name)).json()
+    r = requests.get((settings.API_BASE_URL + "/{n}").format(n=name)).json()
     return(r)
+
 def getInfos(names):
-    r = requests.get("http://api.coincap.io/v2/assets?ids={n}".format(n=",".join(names))).json()
+    r = requests.get((settings.API_BASE_URL + "?ids={n}").format(n=",".join(names))).json()
     return(r)
 
 def floatToStr(val):
@@ -83,23 +85,32 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False):
                     if(d['id'] == asset.name):
                         inf = d
                         break
-                if(inf == None):
+                try:
+                    asset.symbol = inf['symbol']
+                    val = str(asset.amt * round(float(inf['priceUsd']), 2))
+                    totalAssetValue += float(val)
+                    val = val[:val.find(".")+3]
+                    asset.val = floatToStr(val)
+                    asset.img = static("website/images/icon/{s}.png".format(s=asset.symbol.lower()))
+                except:
                     asset.symbol = "err"
                     asset.val = "err"
                     asset.img = static("website/images/icon/{s}.png".format(s=asset.symbol.lower()))
                     continue
-                asset.symbol = inf['symbol']
-                val = str(asset.amt * round(float(inf['priceUsd']), 2))
-                totalAssetValue += float(val)
-                val = val[:val.find(".")+3]
-                asset.val = floatToStr(val)
-                asset.img = static("website/images/icon/{s}.png".format(s=asset.symbol.lower()))
             dic['assets'] = assets
+            symbolsToAmounts = ""
+            for asset in assets:
+                symbolsToAmounts += asset.symbol + "-" + str(asset.amt) + ";"
+            if(len(symbolsToAmounts) > 0):
+                symbolsToAmounts = symbolsToAmounts[:len(symbolsToAmounts)-1]
+            dic['symbolsToAmounts'] = symbolsToAmounts
+            totalAssetValue = round(float(totalAssetValue), 2)
             tAV = floatToStr(totalAssetValue)
-            dic['totalAssetValue'] = tAV[:tAV.find(".")+2]
-            portfolioValue = floatToStr(user_info.cash + totalAssetValue)
-            dic['portfolioValue'] = portfolioValue[:portfolioValue.find(".")+2]
+            dic['totalAssetValue'] = tAV
+            portfolioValue = floatToStr(round(float(user_info.cash), 2) + totalAssetValue)
+            dic['portfolioValue'] = portfolioValue
         else:
+            dic['symbolsToAmount'] = None
             dic['assets'] = None
             dic['totalAssetValue'] = None
             dic['portfolioValue'] = None
@@ -118,7 +129,7 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False):
                 topCryptos.append(BuyOption(crypto[0], crypto[1], static("website/images/icon/{s}.png".format(s=crypto[1].lower()))))
                 try:
                     v = inf['priceUsd']
-                    topCryptos[-1].val = v[:v.find(".") + 3]
+                    topCryptos[-1].val = floatToStr(round(float(v), 2))
                 except:
                     topCryptos[-1].val = "ERR"
         dic['topCryptos'] = topCryptos
@@ -130,6 +141,8 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False):
     else:
         dic['anonymous'] = None
         dic['money'] = None
+    dic['api_base_url'] = settings.API_BASE_URL
+    dic['static_url'] = static("")
     return(dic)
 
 # Create your views here.
@@ -187,3 +200,11 @@ def about(request):
     #redirects lead to the home page, manage popup to inform user of the action that just occured
     dic = makeDict(request)
     return(render(request, 'website/about.html', dic))
+
+
+
+#REST FEATURES:
+
+def searchCryptos(request, term):
+    response_data = requests.get((settings.API_BASE_URL + "?search={t}").format(t=term)).json()
+    return(JsonResponse(response_data))

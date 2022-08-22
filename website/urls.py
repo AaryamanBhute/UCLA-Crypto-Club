@@ -12,4 +12,5 @@ urlpatterns = [
 	path('logout', views.logoutpage, name="logout"),
 	path('loginattempt', views.attemptedlogin, name="attemptedlogin"),
 	path('updatesettings/<str:settings>', views.accountSettings, name="updatesettings"),
+	path('search/<str:term>', views.searchCryptos, name="searchCryptos"),
 ]

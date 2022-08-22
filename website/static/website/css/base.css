@@ -6,6 +6,8 @@
     --accent: #00a8e8;
     --dark-accent: #008cc3;
     --green: #228B22;
+    --fade: rgba(168,168,168, 0.9);
+    --submit-green: #50C878;
 }
 
 /* set font for website*/
@@ -219,6 +221,7 @@ body { margin: 0; padding: 0;}
         margin: 20px;
         font-size: 1.2em;
     }
+    
 }
 .nav{
     display: flex;

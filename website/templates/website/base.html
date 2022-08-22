@@ -98,18 +98,33 @@
     <script>
         var loginurl = "{% provider_login_url 'google'%}?next=/loginattempt";
         var is_anonymous = "{{anonymous}}";
+        var selected_asset;
+        var api_base_url = "{{api_base_url}}";
+        var users_money = "{{money}}";
+        var selected_asset_info;
+        var static_url = "{{static_url}}";
+        var stao = "{{symbolsToAmounts}}"
+        stao = stao.split(";")
+        var symbolsToAmountOwned = {};
+        for(index in stao){
+            let cur = stao[index];
+            let ind = cur.indexOf("-");
+            symbolsToAmountOwned[cur.substring(0, ind)] = parseFloat(cur.substring(ind+1));
+        }
     </script>
 
     <!-- snap svg -->
+    <script src="{% static 'website/js/big.js'%}"></script>
     <script src="{% static 'website/js/snap.js'%}"></script>
-
+    <script src="{% static 'website/js/library.js'%}"></script>
     <script src="{% static 'website/js/basegallery.js'%}"></script>
     <script src="{% static 'website/js/setup.js'%}"></script>
-    <!--<script src="{% static 'website/js/nav.js'%}"></script>-->
     <script src="{% static 'website/js/sidemenu.js'%}"></script>
     <script src="{% static 'website/js/accountpopup.js'%}"></script>
     <script src="{% static 'website/js/alignment.js'%}"></script>
     <script src="{% static 'website/js/buttoning.js'%}"></script>
-
+    <script src="{% static 'website/js/api.js'%}"></script>
+    <script src="{% static 'website/js/buysellmenu.js'%}"></script>
+    
     </body>
 </html>

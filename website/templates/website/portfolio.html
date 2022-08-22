@@ -2,15 +2,18 @@
 {% load static %}
 
 {% block content %}
+<div id="buysellmenu">
+    <div class="content"></div>
+</div>
 <div class="portfoliowrapper">
-    <div id="assets" class="portfioliobubble">
-         
+    <div id="assets" class="portfioliobubble"> 
         <p class="title">Assets</p>
         <div class="breaker"></div>
         <p class="note"><span class="red">To sell Asset, Click Icon</span></p>
+        <div class="breaker"></div>
         <div id="assetcollection" class="ownedassets">
             {% for asset in assets reversed%}
-            <div class="asset">
+            <div class="asset" id="{{asset.symbol}}">
                 <img src="{{asset.img}}" class="asseticon">
                 <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
                 <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
@@ -37,7 +40,7 @@
        <div class="breaker"></div>
         <div id="assetcollection" class="quickbuymenu">
             {% for asset in topCryptos reversed%}
-                <div class="asset">
+                <div class="asset" id="{{asset.symbol}}">
                     <img src="{{asset.img}}" class="asseticon">
                     <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
                     <p class="value"><span class="bold">Cost/Per: </span><span class="green">{{asset.val}}$</span></p>
@@ -60,6 +63,10 @@
             <p>
                 Remember to have fun while learning and experimenting with
                 trading here and try to get to the top of the leaderboards!
+            </p>
+            <p class="red" style="text-align: center; font-weight: 900;">
+                Please note that prices update every refresh, the price used for sells
+                and buys will be that shown in the popup menu when you try to buy or sell
             </p>
         </div>
     </div>

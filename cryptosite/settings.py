@@ -22,10 +22,6 @@ load_dotenv()
 
 import os
 
-import pyEX as p
-
-from coincap import CoinCap
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,9 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("secret_key")
 
-API_KEY = os.getenv("crypto_api_key")
-
-COINCAP = CoinCap()
+API_BASE_URL = os.getenv("crypto_api_url")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
