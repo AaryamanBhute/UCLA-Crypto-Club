@@ -1,0 +1,605 @@
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    .portfoliowrapper{
+        height: calc(180vh - 150px);
+    }
+    .portfoliobubble{
+        padding: 20px;
+        margin: 10px;
+    }
+    .asseticon{
+        width: 200px;
+        height: 200px;
+        margin: 5px;
+    }
+    .asset{
+        column-gap: 15px;
+        padding: 10px;
+    }
+    .title{
+        font-size: 4em;
+    }
+    .asset p{
+        font-size: 2em;
+    }
+    #assets{
+        flex-grow: 1;
+        grid-area: assets;
+    }
+    #money{
+        top: 90px;
+        left: 10px;
+    }
+    .search{
+        min-width: 20vw;
+    }
+    #instructions{
+        min-width: 18vw;
+        grid-area: instruction;
+    }
+    .subtitle{
+        font-size: 2.5em;
+    }
+    .ownedassets{
+        margin-top: 20px;
+    }
+    .note{
+        margin-top: 10px!important;
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    #buy{
+        grid-area: buy;
+    }
+    .portfoliowrapper{
+        grid-template-areas:
+        'instruction'
+        'summary'
+        'assets'
+        'assets'
+        'buy'
+        'buy'
+        'buy';
+        
+    }
+    .sellasset{
+        width: 50px;
+        height: 10px;
+    }
+    .quickbuymenu{
+        margin-top: 20px;
+    }
+    #money{
+        font-weight: 800;
+        background-color: white;
+        font-size: 2em;
+    }
+    #instructioncollection p{
+        margin: 15px;
+        font-size: 1.2em;
+    }
+    .searchButton{
+        width: 40px;
+        height: 36px;
+    }
+    .search{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .searchTerm{
+        padding: 5px;
+        height: 20px;
+    }
+    .wrap{
+        margin-top: 20px;
+        transform: scale(2);
+        margin-bottom: 20px;
+    }
+    #buysellmenu .content p, #buysellmenu .content label{
+        font-size: 1.5em;
+    }
+    #buysellmenu .content #totalAmt{
+        font-weight: 600;
+        height: 50px;
+        font-size: 1.2em;
+    }
+    .closebuysellbutton{
+        right: 10px;
+        top: 10px;
+        width: 50px;
+        height: 50px;
+    }
+    .menupopup{
+        font-size: 1.8em;
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1200px) {
+    .portfoliowrapper{
+        height: calc(120vh - 100px);
+        padding: 10px;
+    }
+    .portfoliobubble{
+        padding: 20px;
+        margin: 10px;
+    }
+    .asseticon{
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+    }
+    .asset{
+        column-gap: 15px;
+        padding: 10px;
+    }
+    .title{
+        font-size: 2em;
+    }
+    .asset p{
+        font-size: 1.2em;
+    }
+    #assets{
+        flex-grow: 1;
+        grid-area: assets;
+    }
+    #money{
+        top: 90px;
+        left: 10px;
+    }
+    .search{
+        min-width: 20vw;
+    }
+    #instructions{
+        min-width: 18vw;
+        grid-area: instruction;
+    }
+    #instructioncollection p{
+        margin: 10px;
+    }
+    .subtitle{
+        font-size: 1.5em;
+    }
+    .ownedassets{
+        margin-top: 20px;
+    }
+    .note{
+        margin-top: 10px!important;
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    #buy{
+        grid-area: buy;
+    }
+    .portfoliowrapper{
+        grid-template-areas:
+        'instruction summary'
+        'instruction summary'
+        'instruction summary'
+        'assets buy'
+        'assets buy'
+        'assets buy'
+        'assets buy'
+        'assets buy'
+        'assets buy'
+        'assets buy'
+        'assets buy';
+        
+    }
+    .sellasset{
+        width: 50px;
+        height: 10px;
+    }
+    .quickbuymenu{
+        margin-top: 20px;
+    }
+    #money{
+        font-weight: 800;
+        background-color: white;
+    }
+    .searchButton{
+        width: 40px;
+        height: 36px;
+        font-size: 20px;
+    }
+    .search{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .searchTerm{
+        padding: 5px;
+        height: 20px;
+    }
+    #instructioncollection p{
+        margin: 10px;
+        font-size: 1em;
+    }
+    .closebuysellbutton{
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    #buysellmenu .content p, #buysellmenu .content label{
+        font-size: 1.5em;
+    }
+    #buysellmenu .content #totalAmt{
+        font-weight: 600;
+        height: 50px;
+        font-size: 1.2em;
+    }
+    .closebuysellbutton{
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .menupopup{
+        font-size: 1.5em;
+    }
+}
+@media only screen and (min-device-width: 1201px) {
+    .portfoliowrapper{
+        height: calc(100vh - 100px);
+        padding: 10px;
+    }
+    .portfoliobubble{
+        padding: 20px;
+        margin: 10px;
+    }
+    .asseticon{
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+    }
+    .asset{
+        column-gap: 15px;
+        padding: 10px;
+    }
+    .title{
+        font-size: 2em;
+    }
+    .asset p{
+        font-size: 1.5em;
+    }
+    #assets{
+        flex-grow: 1;
+        grid-area: assets;
+    }
+    #money{
+        top: 90px;
+        left: 10px;
+    }
+    .search{
+        min-width: 20vw;
+    }
+    #instructions{
+        min-width: 18vw;
+        grid-area: instruction;
+    }
+    #instructioncollection p{
+        margin: 10px;
+    }
+    .subtitle{
+        font-size: 1.5em;
+    }
+    .note{
+        margin-top: 10px!important;
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    #buy{
+        grid-area: buy;
+    }
+    .portfoliowrapper{
+        grid-template-areas:
+        'instruction instruction assets assets assets assets buy buy buy'
+        'instruction instruction assets assets assets assets buy buy buy'
+        'summary summary assets assets assets assets buy buy buy'
+        'summary summary assets assets assets assets buy buy buy';
+    }
+    .sellasset{
+        width: 50px;
+        height: 10px;
+    }
+    .quickbuymenu{
+        margin-top: 20px;
+    }
+    #money{
+        font-weight: 800;
+        background-color: white;
+    }
+    .searchButton{
+        width: 40px;
+        height: 36px;
+        font-size: 20px;
+    }
+    .search{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .searchTerm{
+        padding: 5px;
+        height: 20px;
+    }
+    #buysellmenu .content #totalAmt{
+        height: 20px;
+    }
+    .submit{
+        font-size: 1.2em;
+    }
+    .closebuysellbutton{
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.asset p{
+    white-space: nowrap;
+}
+
+.orderprice{
+    max-width: 80%;
+    overflow: auto;
+}
+
+.portfoliowrapper{
+    width: 100%;
+    display: grid;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+.portfoliobubble{
+    display: flex;
+    max-height: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.portfoliobubble p{
+    margin: 0;
+    padding: 0;
+}
+
+#buy, #assets, #instructions, #summary  {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 900;
+    overflow-y: auto;
+    align-content: flex-start;
+}
+
+.title{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-weight: 900;
+}
+
+.subtitle{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+#assetcollection{
+    display: block;
+    width: fit-content;
+    overflow-x: auto;
+    white-space: nowrap;
+    transform: rotateX(180deg);
+}
+
+.asset{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    transform: rotateX(180deg);
+}
+
+.asseticon{
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    padding: 5px;
+}
+.asseticon:hover{
+    border: 2px solid var(--green);
+}
+
+.bold{
+    font-weight: 900;
+}
+
+.breaker{
+    display: block;
+    width: 100%;
+    height: 0;
+  }
+
+  
+
+  .green{
+    color: var(--green)!important;
+  }
+
+  #instructioncollection{
+    font-weight: 500;
+    font-size: 1em;
+    width: 100%;
+    text-align: start;
+  }
+
+#buycollection{
+    display: flex;
+    width: min-content;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#summary{
+    grid-area: summary;
+}
+
+#instructioncollection p{
+    font-weight: 600;
+}
+
+.submit{
+    border: 2px solid transparent;
+    background-color: var(--submit-green);
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.submit:hover{
+    border: 2px solid var(--accent);
+}
+
+
+.closebuysellbutton{
+    position: absolute;
+    filter:  brightness(0) invert(26%) sepia(92%) saturate(7330%) hue-rotate(357deg) brightness(101%) contrast(116%);
+}
+
+
+
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+    
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.red{
+    color: red;
+}
+
+#buysellmenu{
+    display: flex;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: var(--fade);
+    justify-content: center;
+    align-items: center;
+}
+
+#buysellmenu .content{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    max-width: 80%;
+    max-height: 80%;
+    width: min-content;
+    height: fit-content;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 1;
+    padding: 20px;
+    margin: 0;
+}
+
+#buysellmenu .content p, #buysellmenu .content label{
+    margin: 5px 5px;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+#buysellmenu .content #totalAmt{
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.fa-search:hover{
+    filter: brightness(0) saturate(100%) invert(74%) sepia(91%) saturate(4832%) hue-rotate(84deg) brightness(115%) contrast(132%);;
+}
+
+.submit:hover{
+    cursor: pointer;
+}
+
+.menupopup{
+    position: absolute;
+    top: 50px;
+    right: auto;
+    left: auto;
+    color: red;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+.menupopup p{
+    margin: 0;
+    padding: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+
+
+/* width */
+::-webkit-scrollbar{
+    width: 10px;
+  }
+  ::-webkit-scrollbar:horizontal{
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark-accent);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* color pallete: #ffffff // #00171f // #003459 // #007ea7 // #00a8e8*/
+
+:root{
+    --accent: #00a8e8;
+    --dark-accent: #008cc3;
+    --green: #228B22;
+    --fade: rgba(168,168,168, 0.9);
+    --submit-green: #50C878;
+    --red: red;
+}
+
+/* set font for website*/
+html{
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* remove padding from screen*/
+body { margin: 0; padding: 0;}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    .computer{
+        display: none!important;        
+    }
+    .tablet{
+        display: none!important;        
+    }
+    .nav{
+        height: 150px;
+        width: 100%;
+    }
+    .navlink{
+        display: none!important;
+    }
+    .hamburger{
+        transform: scale(1.7, 1.7);
+    }
+    .not-mobile{
+        display: none!important;
+    }
+    .nav{
+        justify-content: center!important;
+        column-gap: auto;
+    }
+    .accountimgwrapper{
+        margin-right: 2%;
+        position: absolute;
+        right: 20px;
+    }
+    #page{
+        margin-top: 150px;
+    }
+    #sidemenu{
+        position: fixed;
+        top: 0;
+        left: -80vw;
+        width: 80vw;
+        height: 100vh;
+        background-color: var(--accent);
+        z-index: 6;
+
+        display: flex;
+        justify-content: center;
+        color: white;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    #sidemenu p{
+        width: 100%;
+        font-size: 3.5em;
+        font-weight: 700;
+    }
+    #menuicon{
+        position: fixed;
+        left: 50px;
+        top: 50px;
+        z-index: 6;
+    }
+    .linkwrapper{
+        height: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        text-indent: 20%;
+        align-content: space-between;
+    }
+    #accountpopup{
+        top: 195px;
+        width: fit-content;
+        height: fit-content;
+        right: 45px;
+    }
+    .corner{
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        top: -23px;
+    }
+    .content{
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .toggleswitch{
+        transform: scale(1.8);
+        margin-top: 50px;
+    }
+    .savebuttonwrapper{
+        margin-top: 40px;
+    }
+    #popup{
+        width: fit-content;
+        background-color: white;
+        z-index: 5;
+    }
+    .closebutton{
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    #popup p{
+        margin-left: 25px;
+        margin-right: 25px;
+        font-size: 2.5em;
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1000px) {
+    .computer{
+        display: none!important;        
+    }
+    .mobile{
+        display: none!important;        
+    }
+    .nav{
+        height: 100px;
+    }
+    .accountimgwrapper{
+        margin-right: 1.5%;
+    }
+    #page{
+        margin-top: 100px;
+    }
+    #accountpopup{
+        top: 130px;
+        width: fit-content;
+        height: fit-content;
+        right: 23px;
+    }
+    .corner{
+        width: 30px;
+        height: 30px;
+        right: 6.5px;
+        top: -15px;
+    }
+    .content{
+        margin-bottom: 15px;
+    }
+    .toggleswitch{
+        transform: scale(1.4);
+        margin-top: 40px;
+    }
+    .savebuttonwrapper{
+        margin-top: 20px;
+    }
+    .closebutton{
+        width: 40px;
+        height: 40px;
+        margin: 20px;
+    }
+    #popup p{
+        margin-left: 25px;
+        font-size: 1.5em;
+    }
+}
+@media only screen and (min-device-width: 1001px) {
+    .mobile{
+        display: none!important;        
+    }
+    .tablet{
+        display: none!important;        
+    }
+    .nav{
+        height: 80px;
+    }
+    .accountimgwrapper{
+        margin-right: 1%;
+    }
+    #page{
+        margin-top: 80px;
+    }
+    #accountpopup{
+        top: 115px;
+        width: fit-content;
+        height: fit-content;
+        right: 20px;
+    }
+    .corner{
+        width: 30px;
+        height: 30px;
+        right: 6.5px;
+        top: -15px;
+    }
+    .content{
+        margin-bottom: 15px;
+    }
+    .toggleswitch{
+        transform: scale(1.2);
+        margin-top: 40px;
+    }
+    .savebuttonwrapper{
+        margin-top: 20px;
+    }
+    #popup{
+        min-height: 50px;
+    }
+    .closebutton{
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+    #popup p{
+        margin: 20px;
+        font-size: 1.2em;
+    }
+    
+}
+.nav{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+}
+.navlogo{
+    margin-left: 1%;
+    height: 80%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navimg{
+    height: 90%;
+    width: auto;
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.navimg:hover{
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.nav p{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.nav p:hover{
+    cursor: pointer;
+}
+.accountimgwrapper{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.accountimg{
+    border-radius: 20px;
+    height: 40%;
+    padding: 10px;
+    width: auto;
+    -webkit-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+}
+.accountimg:hover{
+    cursor: pointer;
+    background-color: #00a8e8;
+    -webkit-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #accountpopup{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    z-index: 4;
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+}
+.corner{
+    position: absolute;
+    
+    transform: rotate(45deg);
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) -.5px -.5px 0px;
+    border: none;
+}
+#accountpopup p{
+    font-weight: 600;
+}
+.content{
+    display: inline;
+    justify-content: center;
+}
+.content p{
+    width: 100%;
+    text-align: center;
+}
+.loginbutton1, .logoutbutton1{
+    font-style: italic;
+    font-size: 1.3em;
+    color: black;
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.loginbutton1:hover, .logoutbutton1:hover{
+    color: var(--green);
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+.contentwrapper{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.savebuttonwrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--submit-green);
+    border-radius: 20px;
+}
+.savebuttonwrapper:hover{
+    background-color: var(--submit-green);
+    color: white;
+    cursor: pointer;
+}
+.savebutton{
+    margin: 0;
+    padding: 10px;
+    
+    font-size: 1.2em;
+}
+.logoutbuttonwrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.logoutbuttonwrapper:hover{
+    background-color: var(--red);
+    color: white;
+    cursor: pointer;
+}
+.accountlogout{
+    margin: 0;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#popup{
+    height: fit-content;
+    display: flex;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    align-items: center;
+    background-color: white;
+    z-index: 5;
+}
+
+#popup p{
+    font-weight: 900;
+}
+
+.closebutton{
+    filter: brightness(0) saturate(100%);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+}
+
+.closebutton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transition: transform 250ms linear;
+    -ms-transition: transform 250ms linear;
+    transition: transform 250ms linear;
+    filter:  brightness(0) saturate(100%) invert(9%) sepia(97%) saturate(5047%) hue-rotate(358deg) brightness(96%) contrast(112%);
+}
+#page{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -52,16 +52,7 @@ def getUserInfo(request):
     return(user_info)
 
 def floatToStr(val):
-    val = str(val)
-    ind = val.find(".")
-    counter = 0
-    while(ind > 0):
-        if(counter == 3):
-            counter = 0
-            val = val[:ind] + "," + val[ind:]
-        ind -= 1
-        counter += 1
-    return(val)
+    return(f'{Decimal(val):,}')
 
 def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeaderboard=False):
     user_info = getUserInfo(request)
@@ -71,6 +62,23 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
         popup = None
     request.session['popup'] = None
     dic = {'popup': popup}
+    if(needsTopCryptoInfo):
+        topCryptos = []
+        info = getInfos([crypto[0] for crypto in TopCryptos])['data']
+        for crypto in TopCryptos:
+            inf = None
+            for d in info:
+                if(d['id'] == crypto[0]):
+                    inf = d
+                    break
+            if(inf != None):
+                topCryptos.append(BuyOption(crypto[0], crypto[1], static("website/images/icon/{s}.png".format(s=crypto[1].lower()))))
+                try:
+                    v = inf['priceUsd']
+                    topCryptos[-1].val = floatToStr(round(Decimal(v), 2))
+                except:
+                    topCryptos[-1].val = "ERR"
+        dic['topCryptos'] = topCryptos
     if(needsAssetInfo):
         if(user_info != None):
             totalAssetValue = 0
@@ -111,32 +119,6 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
             dic['totalAssetValue'] = tAV
             portfolioValue = floatToStr(round(Decimal(user_info.cash), 2) + totalAssetValue)
             dic['portfolioValue'] = portfolioValue
-        else:
-            dic['symbolsToAmount'] = None
-            dic['assets'] = None
-            dic['totalAssetValue'] = None
-            dic['portfolioValue'] = None
-    else:
-        dic['assets'] = None
-    if(needsTopCryptoInfo):
-        topCryptos = []
-        info = getInfos([crypto[0] for crypto in TopCryptos])['data']
-        for crypto in TopCryptos:
-            inf = None
-            for d in info:
-                if(d['id'] == crypto[0]):
-                    inf = d
-                    break
-            if(inf != None):
-                topCryptos.append(BuyOption(crypto[0], crypto[1], static("website/images/icon/{s}.png".format(s=crypto[1].lower()))))
-                try:
-                    v = inf['priceUsd']
-                    topCryptos[-1].val = floatToStr(round(Decimal(v), 2))
-                except:
-                    topCryptos[-1].val = "ERR"
-        dic['topCryptos'] = topCryptos
-    else:
-        dic['topCryptos'] = None
     if(needsLeaderboard):
         dic['minutesTilReset'] = 60 - datetime.utcnow().minute
         dic['secondsTilReset'] = 60 - datetime.utcnow().second
@@ -166,18 +148,9 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
                 dic['changesincelast'] = floatToStr(round(user_info.leaderboard_portfolio_value*100/Decimal(user_info.price_history), 2) - 100)
             phistory = phistory.split(";")
             dic['price_history'] = ";".join([str(round(float(p), 2)) for p in phistory])
-    else:
-        dic['alltimechange'] = None
-        dic['changesincelast'] = None
-        dic['leaderboardOrder'] = None
-        dic['minutesTilReset'] = None
-        dic['secondsTilReset'] = None
     if(user_info != None):
         dic['anonymous'] = user_info.anonymous
         dic['money'] = floatToStr(round(Decimal(user_info.cash), 2))
-    else:
-        dic['anonymous'] = None
-        dic['money'] = None
     dic['api_base_url'] = settings.API_BASE_URL
     dic['static_url'] = static("")
     return(dic)
@@ -215,7 +188,7 @@ def logoutpage(request):
         lout(request)
         request.session['popup'] = "Logged Out!"
     else:
-        request.session['popup'] = "Invalid Logout!"
+        request.session['popup'] = "Invalid Logout"
     return(redirect('/'))
 
 def attemptedlogin(request):
@@ -223,11 +196,11 @@ def attemptedlogin(request):
     if(request.user.is_authenticated):
         request.session['popup'] = "Logged In!"
     else:
-        request.session['popup'] = "Invalid Login!"
+        request.session['popup'] = "Invalid Login"
     return(redirect('/'))
 
 def somethingWentWrong(request):
-    request.session['popup'] = "Something Went Wrong, Try Again!"
+    request.session['popup'] = "Something Went Wrong, Try Again"
     return(redirect('/'))
 
 def accountSettings(request, settings):
@@ -283,12 +256,10 @@ def attemptBuy(request, searchid, amount):
             assets.append(i['id'] + "/" + str(amount))
         assets.sort()
         user_info.updateAssets(";".join(assets))
+        request.session['popup'] = "Successful Buy!"
     else:
         request.session['popup'] = "Not enough funds"
-    request.session['popup'] = "Successful Buy!"
     return(redirect('/portfolio'))
-
-
 
 def attemptSell(request, searchid, amount):
     amount = Decimal(amount)
@@ -330,9 +301,7 @@ def attemptSell(request, searchid, amount):
     nAssets.sort()
     user_info.updateAssets(";".join(nAssets))
     request.session['popup'] = "Successful Sell!"
-    return(redirect('/portfolio'))
-    
-    
+    return(redirect('/portfolio'))    
 
 def findCrypto(term):
     response_data = requests.get((settings.API_BASE_URL + "?search={t}").format(t=term)).json()
