@@ -43,7 +43,7 @@ function generateBuyMenu(info){
     return(
         `
         <img src="${static_url}website/images/closebutton.png" class="closebuysellbutton">
-        <img src=${static_url}website/images/icon/${selected_asset_info.symbol}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
+        <img src=${static_url}website/images/icon/${selected_asset_info.symbol.toLowerCase()}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
         <p>Asset Name: <span class="accent">${selected_asset_info.name}</span></p>
         <p>Asset Symbol: <span class="accent">${selected_asset_info.symbol}</span></p>
         <p class="price"> Price Per: <span class="red">${floatToString(info.priceUsd)}$</span></p>
@@ -61,7 +61,7 @@ function generateSellMenu(info){
     return(
         `
         <img src="${static_url}website/images/closebutton.png" class="closebuysellbutton">
-        <img src=${static_url}website/images/icon/${selected_asset_info.symbol}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
+        <img src=${static_url}website/images/icon/${selected_asset_info.symbol.toLowerCase()}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
         <p>Asset Name: <span class="accent">${selected_asset_info.name}</span></p>
         <p>Asset Symbol: <span class="accent">${selected_asset_info.symbol}</span></p>
         <p class="price"> Price Per: <span class="red">${floatToString(info.priceUsd)}$</span></p>
