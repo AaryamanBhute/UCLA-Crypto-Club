@@ -12,7 +12,6 @@ from django.utils import timezone
 from django.http import JsonResponse
 from .utils import *
 import requests
-from .tasks import *
 
 TopCryptos = [('bitcoin', 'BTC'), ('ethereum', 'ETH'), ('tether', 'USDT'), ('cardano', 'ADA'), ('xrp', 'XRP'), ('solana', 'SOL')]
 
@@ -143,9 +142,14 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
             phistory = user_info.price_history
             ri = phistory.rfind(";")
             if(ri >= 0):
-                dic['changesincelast'] = floatToStr(round(user_info.leaderboard_portfolio_value*100/Decimal(user_info.price_history[ri+1:]), 2) - 100)
-            else:
-                dic['changesincelast'] = floatToStr(round(user_info.leaderboard_portfolio_value*100/Decimal(user_info.price_history), 2) - 100)
+                tphist = phistory[:ri]
+                ri = tphist.rfind(";")
+                if(ri >= 0):
+                    dic['changesincelast'] = floatToStr(round(user_info.leaderboard_portfolio_value*100/Decimal(tphist[ri+1:]), 2) - 100)
+                else:
+                    dic['changesincelast'] = dic['alltimechange']
+            if('changesincelast' not in dic):
+                dic['changesincelast'] = 'N/A'
             phistory = phistory.split(";")
             dic['price_history'] = ";".join([str(round(float(p), 2)) for p in phistory])
     if(user_info != None):
