@@ -31,5 +31,5 @@ class Command(BaseCommand):
                 assets_value += assetToVal[asset_id] * Decimal(asset_amt)
             val = assets_value + user_info.cash
             user_info.updateLeaderboardPortfolioValue(val)
-            user_info.addPriceHistory(val)
+            user_info.addPriceHistory(round(val, 2))
         return
