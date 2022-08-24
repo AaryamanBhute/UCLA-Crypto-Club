@@ -1,0 +1,250 @@
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    .leaderboardwrapper{
+        grid-template-areas:
+        'analytics leaderboard nextupdate'
+        'analytics leaderboard leaderboardstats';
+        height: calc(180vh - 190px);
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1200px) {
+    .leaderboardwrapper{
+        grid-template-areas:
+        'analytics leaderboard nextupdate'
+        'analytics leaderboard leaderboardstats';
+        height: calc(100vh - 120px);
+    }
+    .user p{
+        font-size: 1.5em;
+    }
+    .user .rank{
+        display: flex;
+        font-size: 3em;
+    }
+    .user .info p{
+        margin: 5px;
+        margin-left: 0px;
+    }
+    .user{
+        column-gap: 0px;
+        padding: 10px;
+    }
+    #users{
+        padding: 20px;
+        padding-top: 0;
+    }
+    .timer{
+        font-size: 1.8em;
+        padding: 5px;
+    }
+    #nextupdate p.explaination{
+        font-weight: 600;
+        padding: 20px;
+        padding-top: 0;
+        font-size: 1.4em;
+    }
+    #nextupdate p.note{
+        font-weight: 600;
+        color: red;
+        padding: 30px;
+        padding-top: 0;
+    }
+    #nextupdate{
+        padding: 10px;
+    }
+}
+@media only screen and (min-device-width: 1201px) {
+    .leaderboardwrapper{
+        grid-template-areas:
+        'analytics leaderboard nextupdate'
+        'analytics leaderboard leaderboardstats';
+        height: calc(100vh - 120px);
+    }
+    .user p, #analytics .info p{
+        font-size: 1.5em;
+    }
+    .user .rank{
+        font-size: 3em;
+    }
+    .user .info p{
+        margin: 5px;
+    }
+    .user{
+        padding: 10px;
+    }
+    #users{
+        padding: 20px;
+        padding-top: 0;
+    }
+    .timer{
+        font-size: 1.8em;
+        padding: 5px;
+    }
+    #nextupdate p.explaination{
+        font-weight: 600;
+        padding: 20px;
+        padding-top: 0;
+        font-size: 1.4em;
+    }
+    #nextupdate p.note{
+        font-weight: 600;
+        color: red;
+        padding: 30px;
+        padding-top: 0;
+    }
+    #nextupdate{
+        padding: 10px;
+    }
+    #analyticscontent p{
+        font-size: 1.3em;
+        margin: 5px;
+    }
+    .large{
+        font-size: 2em!important;
+        padding: 10px;
+    }
+    #chart{
+        margin-top: 30px;
+        width: 90%;
+        aspect-ratio: 1/1;
+    }
+}
+
+.minititle{
+    font-style: oblique;
+}
+
+#nextupdate{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-area: nextupdate;
+}
+
+.leaderboardbubble{
+    display: flex;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
+    align-content: flex-start;
+}
+
+.leaderboardbubble p{
+    margin: 0;
+}
+
+.user p, #analytics .info p{
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.user .rank{
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.leaderboardwrapper{
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-auto-rows: minmax(0, 1fr);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 20px;
+    grid-gap: 20px;
+}
+
+.rank{
+    float: left;
+    height: 100%;
+}
+
+#leaderboard{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-area: leaderboard;
+}
+
+#analytics{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-area: analytics;
+    padding: 10px;
+}
+
+#analytics .note{
+    color: var(--accent);
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.user{
+    display: flex;
+    height: min-content;
+    justify-content: flex-start;
+    column-gap: 20px;
+}
+
+.user .rank{
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+}
+
+.user .info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+#users{
+    width: min-content;
+    max-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotate(180deg);
+    direction: ltr;
+}
+
+.userswrapper{
+    width: min-content;
+    display: flex;
+    overflow-x: auto;
+    transform: rotate(180deg);
+    direction: rtl;
+    overflow-y: auto;
+}
+
+.timer{
+    color: var(--accent);
+    font-weight: 600;
+}
+
+#analyticscontent{
+    transform: rotate(180deg);
+    direction: ltr;
+    width: 90%;
+    padding: 10px;
+}
+
+#analyticscontent p{
+    font-weight: 600;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+}
+
+.analyticswrapper{
+    margin-top: 20px;
+    transform: rotate(180deg);
+    direction: rtl;
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -3,10 +3,11 @@
 
 {% block content %}
 <div id="buysellmenu">
+    <div class="menupopup"></div>
     <div class="content"></div>
 </div>
 <div class="portfoliowrapper">
-    <div id="assets" class="portfioliobubble"> 
+    <div id="assets" class="portfoliobubble"> 
         <p class="title">Assets</p>
         <div class="breaker"></div>
         <p class="note"><span class="red">To sell Asset, Click Icon</span></p>
@@ -22,12 +23,12 @@
             {% endfor %}
         </div>
     </div>
-    <div id="buy" class="portfioliobubble">
+    <div id="buy" class="portfoliobubble">
         <p class="title">Market</p>
         <div class="breaker"></div>
         <div class="wrap">
             <div class="search">
-               <input type="text" class="searchTerm" placeholder="What are you looking for?">
+               <input type="text" class="searchTerm" placeholder="Enter search, eg. BTC or Bitcoin">
                <button type="submit" class="searchButton">
                    <i class="fa fa-search"></i>
                </button>
@@ -48,7 +49,7 @@
             {% endfor %} 
         </div>
     </div>
-    <div id="instructions" class="portfioliobubble">
+    <div id="instructions" class="portfoliobubble">
         <p class="title"><span class="accent">Hello!</span></p>
         <div class="breaker"></div>
         <div id="instructioncollection">
@@ -66,20 +67,25 @@
             </p>
             <p class="red" style="text-align: center; font-weight: 900;">
                 Please note that prices update every refresh, the price used for sells
-                and buys will be that shown in the popup menu when you try to buy or sell
+                and buys will be that at the time the request is processed
+            </p>
+            <p class="accent" style="text-align: center; font-weight: 900;">
+                Additionally, transactions are done with more precision than
+                just two decimals. Prices are still shown with 1 cent as the smallest
+                increment.
             </p>
         </div>
     </div>
-    <div id="summary" class="portfioliobubble">
+    <div id="summary" class="portfoliobubble">
         <p class="title">Summary</p>
         <div class="breaker"></div>
-        <div id="money" class="portfioliobubble">
+        <div id="money" class="portfoliobubble">
             <p>Cash Available: <span class="green">{{money}}$</span></p>
         </div>
-        <div id="money" class="portfioliobubble">
+        <div id="money" class="portfoliobubble">
             <p>Total Asset Value: <span class="green">{{totalAssetValue}}$</span></p>
         </div>
-        <div id="money" class="portfioliobubble">
+        <div id="money" class="portfoliobubble">
             <p>Portfolio Value: <span class="green">{{portfolioValue}}$</span></p>
         </div>
     </div>

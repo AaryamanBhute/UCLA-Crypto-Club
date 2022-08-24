@@ -4,6 +4,9 @@ $(".loginbutton").click(function(){
 $(".logoutbutton").click(function(){
     window.location.assign("/logout");
 });
+$(".accountlogout").click(function(){
+    window.location.assign("/logout");
+});
 $(".loginbutton1").click(function(){
     window.location.assign(loginurl);
 });

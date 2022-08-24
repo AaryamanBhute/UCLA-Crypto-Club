@@ -8,6 +8,7 @@
     --green: #228B22;
     --fade: rgba(168,168,168, 0.9);
     --submit-green: #50C878;
+    --red: red;
 }
 
 /* set font for website*/
@@ -374,11 +375,11 @@ body { margin: 0; padding: 0;}
     width: 100%;
     justify-content: center;
     text-align: center;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--submit-green);
     border-radius: 20px;
 }
 .savebuttonwrapper:hover{
-    background-color: var(--accent);
+    background-color: var(--submit-green);
     color: white;
     cursor: pointer;
 }
@@ -386,6 +387,25 @@ body { margin: 0; padding: 0;}
     margin: 0;
     padding: 10px;
     
+    font-size: 1.2em;
+}
+.logoutbuttonwrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.logoutbuttonwrapper:hover{
+    background-color: var(--red);
+    color: white;
+    cursor: pointer;
+}
+.accountlogout{
+    margin: 0;
+    padding: 10px;
     font-size: 1.2em;
 }
 

@@ -22,6 +22,8 @@ load_dotenv()
 
 import os
 
+from datetime import date, datetime
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,15 +36,21 @@ SECRET_KEY = os.getenv("secret_key")
 
 API_BASE_URL = os.getenv("crypto_api_url")
 
+ALLOWED_EMAILS = os.getenv("allowed_emails")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+s_start = os.getenv("season_start").split(',')
+
+SEASON_START = date(int(s_start[0]), int(s_start[1]), int(s_start[2]))
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +63,25 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_q',
 ]
+
+Q_CLUSTER = {
+    'name': 'cryptosite',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': 'ec2-3-232-136-13.compute-1.amazonaws.com',
+        'port': 30769,
+        'password' : 'p4beb0cd4ad229fc6cb4b1e4c28913457eff16a5646b3cce6d76479e001f87aa8',
+        'db': 0, }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/switch.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/loading.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'website/css/portfolio.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/leaderboards.css' %}">
         <script src="https://kit.fontawesome.com/496641ee9b.js" crossorigin="anonymous"></script>
         <!-- Stops rotation on mobile devices / to be implemented in future -->
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
@@ -55,6 +56,9 @@
                         <div class="savebuttonwrapper">
                             <p class="savebutton">Save</p>
                         </div>
+                        <div class="logoutbuttonwrapper">
+                            <p class="accountlogout">Logout</p>
+                        </div>
                     </div>
                     {% else %}
                     <p>Changing Settings?</p>
@@ -94,6 +98,7 @@
             {% block content %}
             {% endblock content %}
         </div>
+    </body>
     
     <script>
         var loginurl = "{% provider_login_url 'google'%}?next=/loginattempt";
@@ -111,11 +116,20 @@
             let ind = cur.indexOf("-");
             symbolsToAmountOwned[cur.substring(0, ind)] = parseFloat(cur.substring(ind+1));
         }
+        var minutesTilLeaderboardReset;
+        try{
+            minutesTilLeaderboardReset = parseInt("{{minutesTilReset}}");
+        }
+        catch{}
+        var secondsTilLeaderboardReset;
+        try{
+            secondsTilLeaderboardReset = parseInt("{{secondsTilReset}}");
+        }
+        catch{}
+        var price_history = "{{price_history}}"
     </script>
 
-    <!-- snap svg -->
     <script src="{% static 'website/js/big.js'%}"></script>
-    <script src="{% static 'website/js/snap.js'%}"></script>
     <script src="{% static 'website/js/library.js'%}"></script>
     <script src="{% static 'website/js/basegallery.js'%}"></script>
     <script src="{% static 'website/js/setup.js'%}"></script>
@@ -125,6 +139,8 @@
     <script src="{% static 'website/js/buttoning.js'%}"></script>
     <script src="{% static 'website/js/api.js'%}"></script>
     <script src="{% static 'website/js/buysellmenu.js'%}"></script>
-    
-    </body>
+    <script src="{% static 'website/js/leaderboardresettimer.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="{% static 'website/js/chart.js'%}"></script>
+
 </html>

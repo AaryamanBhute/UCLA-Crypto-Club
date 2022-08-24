@@ -29,5 +29,33 @@ $( document ).ready(function() {
             $("#hider").css("pointer-events", "none");
         }, 200);
     }
+    let e = $(".atcv")
+    try{
+        let f = parseFloat(e.text())
+        if(f > 0){
+            $(e).css("color", "green")
+        }
+        else if(f < 0){
+            $(e).css("color", "red")
+        }
+        else{
+            $(e).css("color", "grey")
+        }
+    }
+    catch{}
+    e = $(".cslv")
+    try{
+        let f = parseFloat(e.text())
+        if(f > 0){
+            $(e).css("color", "green")
+        }
+        else if(f < 0){
+            $(e).css("color", "red")
+        }
+        else{
+            $(e).css("color", "grey")
+        }
+    }
+    catch{}
 });
 

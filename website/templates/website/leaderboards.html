@@ -1,0 +1,60 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="leaderboardwrapper">
+    <div id="leaderboard" class="leaderboardbubble">
+        <p class="title">Leaderboard</p>
+        <div class="breaker"></div>
+        <div class="userswrapper">
+            <div id="users">
+                {% for user_info in leaderboardOrder%}
+                <div class="user">
+                    <div class="rank">
+                        <p>{{ forloop.counter }}.</p>
+                    </div>
+                    <div class="info">
+                        <p class="name"><strong>Name:</strong> <span class="accent">{{user_info.name}}</span></p>
+                        <p class="portfoliovalue"><strong>Portfolio Value:</strong> <span class="green">{{user_info.portfolio_value}}$</span></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="analytics" class="leaderboardbubble">
+        <p class="title">Your Analytics</p>
+        <div class="breaker"></div>
+        <div class="analyticswrapper">
+            <div id="analyticscontent">
+                <p class="minititle"> Your Leaderboard Rank</p>
+                    <p class="accent large">{{rank}}</p>
+                <p class="minititle"> All Time Account Value Change</p>
+                    <p class="atcv large">{{alltimechange}}%</p>
+                <p class="minititle"> Account Value Change Since Refresh</p>
+                    <p class="cslv large">{{changesincelast}}%</p>
+                <p class="minititle"> Recent Account Value History </p>
+                    <canvas id="chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div id="nextupdate" class="leaderboardbubble">
+        <p class="title">Time Until Refresh:</p>
+        <div class="breaker"></div>
+        <p class="timer">--:--</p>
+        <p class="explaination">
+            The leaderboard is updated every hour and the value
+            of each account displayed is that at the last update.
+        </p>
+        <p class="note">
+            New accounts will be displayed with their starting funds until
+            the next update.
+            <br>
+            Additionally,
+            all analytics are calculated using the values from the last update.
+        </p>
+    </div>
+</div>
+
+{% endblock %}
