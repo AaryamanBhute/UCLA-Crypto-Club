@@ -61,7 +61,6 @@
     }
     #chart{
         margin-top: 30px;
-        width: 90%;
         aspect-ratio: 1/1;
     }
 }
@@ -187,6 +186,10 @@
         width: 90%;
         aspect-ratio: 1/1;
     }
+}
+
+#chart{
+    max-width: 90%;
 }
 
 .minititle{

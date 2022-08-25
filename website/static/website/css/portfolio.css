@@ -351,6 +351,10 @@
     }
 }
 
+canvas{
+    margin: 0 auto;
+    }
+
 .assetchart{
     padding: 50px;
     height: auto;

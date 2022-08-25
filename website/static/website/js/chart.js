@@ -36,8 +36,9 @@ $(document).ready(function(){
                         }
                       },
                       display : true,
-                  }]
-                  
+                  }],
+                  responsive : true,
+                  maintainAspectRatio : false,
               }
             }
           });

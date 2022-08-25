@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    Chart.defaults.global.defaultFontStyle = '900';
+    Chart.defaults.global.defaultFontStyle = '600';
     $(".assetchart").each(function(i){
         let asset_id = $(this).prop('id');
         let is_buy = asset_id.search('/b')
@@ -55,8 +55,6 @@ $(document).ready(function(){
                     },
                 responsive : true,
                 maintainAspectRatio : true,
-                
-                
                 }
             });
         });        
