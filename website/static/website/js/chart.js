@@ -3,7 +3,6 @@ $(document).ready(function(){
         var xValues = [];
         var yValues = [];
         let price_history_recent = price_history.split(";");
-        console.log(price_history);
         let c = 0;
         for (let i = 0; i < price_history_recent.length; i++){
             
@@ -11,7 +10,6 @@ $(document).ready(function(){
             c += 1;
             yValues.push(parseFloat(price_history_recent[i]))
         }
-        console.log(yValues, xValues);
     
         new Chart("chart", {
             type: "line",

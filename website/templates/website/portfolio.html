@@ -14,6 +14,8 @@
         <div class="breaker"></div>
         <div id="assetcollection" class="ownedassets">
             {% for asset in assets reversed%}
+            <canvas id="{{asset.id}}" class="assetchart owned"></canvas>
+            <p class="pricehisttitle  flip" class="{{asset.id}}">Recent Price History</p>
             <div class="asset" id="{{asset.symbol}}">
                 <img src="{{asset.img}}" class="asseticon">
                 <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
@@ -41,6 +43,8 @@
        <div class="breaker"></div>
         <div id="assetcollection" class="quickbuymenu">
             {% for asset in topCryptos reversed%}
+                <canvas id="{{asset.id}}/b" class="assetchart unowned"></canvas>
+                <p class="pricehisttitle  flip">Recent Price History</p>
                 <div class="asset" id="{{asset.symbol}}">
                     <img src="{{asset.img}}" class="asseticon">
                     <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>

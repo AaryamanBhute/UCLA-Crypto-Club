@@ -111,6 +111,12 @@
     .menupopup{
         font-size: 1.8em;
     }
+    .owned{
+        max-width: 80vw;
+    }
+    .unowned{
+        max-width: 80vw;
+    }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1200px) {
     .portfoliowrapper{
@@ -234,6 +240,12 @@
     .menupopup{
         font-size: 1.5em;
     }
+    .owned{
+        max-width: 35vw;
+    }
+    .unowned{
+        max-width: 35vw;
+    }
 }
 @media only screen and (min-device-width: 1201px) {
     .portfoliowrapper{
@@ -331,6 +343,22 @@
         width: 30px;
         height: 30px;
     }
+    .owned{
+        max-width: 30vw;
+    }
+    .unowned{
+        max-width: 23vw;
+    }
+}
+
+.assetchart{
+    padding: 50px;
+    height: auto;
+    transform: rotateX(180deg);
+}
+
+.flip{
+    transform: rotateX(180deg);
 }
 
 .asset p{

@@ -12,23 +12,26 @@ from django.utils import timezone
 from django.http import JsonResponse
 from .utils import *
 import requests
+import time
 
 TopCryptos = [('bitcoin', 'BTC'), ('ethereum', 'ETH'), ('tether', 'USDT'), ('cardano', 'ADA'), ('xrp', 'XRP'), ('solana', 'SOL')]
 
 class Asset:
-    def __init__(self, name=None, amt=None, symbol=None, img=None, val=None):
+    def __init__(self, name=None, amt=None, symbol=None, img=None, val=None, id=None):
         self.symbol = symbol
         self.amt = amt
         self.img = img
         self.val = val
         self.name = name
+        self.id = id
 
 class BuyOption:
-    def __init__(self, name=None, symbol=None, img=None, price=None):
+    def __init__(self, name=None, symbol=None, img=None, price=None, id=None):
         self.symbol = symbol
         self.img = img
         self.price = price
         self.name = name
+        self.id = id
 
 class LeaderboardEntry:
     def __init__(self, name=None, portfolio_value=None):
@@ -71,12 +74,14 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
                     inf = d
                     break
             if(inf != None):
-                topCryptos.append(BuyOption(crypto[0], crypto[1], static("website/images/icon/{s}.png".format(s=crypto[1].lower()))))
+                topCryptos.append(BuyOption(id = crypto[0], symbol = crypto[1], img=static("website/images/icon/{s}.png".format(s=crypto[1].lower()))))
                 try:
                     v = inf['priceUsd']
                     topCryptos[-1].val = floatToStr(round(Decimal(v), 2))
+                    topCryptos[-1].name = inf['name']
                 except:
                     topCryptos[-1].val = "ERR"
+                    topCryptos[-1].name = "ERR"
         dic['topCryptos'] = topCryptos
     if(needsAssetInfo):
         if(user_info != None):
@@ -85,16 +90,17 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
             if(user_info.assets != ""):
                 for e in user_info.assets.split(";"):
                     divider = e.find("/")
-                    assets.append(Asset(e[:divider], Decimal(e[divider+1:])))
-            infos = getInfos([asset.name for asset in assets])['data']
+                    assets.append(Asset(id= e[:divider], amt=Decimal(e[divider+1:])))
+            infos = getInfos([asset.id for asset in assets])['data']
             for i in range(0, len(assets)):
                 asset = assets[i]
                 inf = None
                 for d in infos:
-                    if(d['id'] == asset.name):
+                    if(d['id'] == asset.id):
                         inf = d
                         break
                 try:
+                    asset.name = inf['name']
                     asset.symbol = inf['symbol']
                     val = (Decimal(asset.amt) * round(Decimal(inf['priceUsd']), 2))
                     totalAssetValue += Decimal(val)
@@ -315,6 +321,16 @@ def findCrypto(term):
 
 def searchCryptos(request, term):
     response_data = requests.get((settings.API_BASE_URL + "?search={t}").format(t=term)).json()
+    try:
+        for data in response_data['data']:
+            break
+        return(JsonResponse(response_data))
+    except:
+        return(JsonResponse({'data' : []}))
+
+def getPriceHistory(request, id):
+    t = int(round(time.time() * 1000))
+    response_data = requests.get('https://api.coincap.io/v2/assets/{i}/history?interval=h1&start={s}&end={e}'.format(i=id, s=str(t-108000000), e=str(t))).json()
     try:
         for data in response_data['data']:
             break

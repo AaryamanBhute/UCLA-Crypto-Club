@@ -39,7 +39,7 @@ API_BASE_URL = os.getenv("crypto_api_url")
 ALLOWED_EMAILS = os.getenv("allowed_emails")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

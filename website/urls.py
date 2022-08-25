@@ -17,4 +17,5 @@ urlpatterns = [
 	path('sell/<str:searchid>/<str:amount>', views.attemptSell, name="attemptSell"),
 	path('buy/<str:searchid>/<str:amount>', views.attemptBuy, name="attemptBuy"),
 	path('search/<str:term>', views.searchCryptos, name="searchCryptos"),
+	path('search/history/<str:id>', views.getPriceHistory, name="priceHistory"),
 ]
