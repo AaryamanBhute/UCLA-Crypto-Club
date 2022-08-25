@@ -36,6 +36,9 @@ $(document).ready(function(){
                         }
                       },
                       display : true,
+                      gridLines: {
+                        display: false
+                     }
                   }],
                   responsive : true,
                   maintainAspectRatio : false,
