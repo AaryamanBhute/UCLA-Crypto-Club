@@ -99,7 +99,7 @@ $('.assetname').click(function(){
     makeChart(asset_n, "chart1", 12, 'm15');
     makeChart(asset_n, "chart2", 24, 'm30');
     makeChart(asset_n, "chart3", 48, 'h1');
-    makeChart(asset_n, "chart4", 168, 'h6');
+    makeChart(asset_n, "chart4", 168, 'h2');
     makeChart(asset_n, "chart5", 730, 'h12');
     makeChart(asset_n, "chart6", 2190, 'd1');
 })
