@@ -47,7 +47,15 @@
                     <div class="anonoption">
                         <p>Stay Anonymous?</p>
                         <div class="toggleswitch">
-                            <div class="button r" id="button-1">
+                            <div class="button r anon-switch" id="button-1">
+                                <input type="checkbox" class="checkbox">
+                                <div class="knobs"></div>
+                                <div class="layer"></div>
+                              </div>
+                        </div>
+                        <p>Use Light Mode?</p>
+                        <div class="toggleswitch">
+                            <div class="button r light-mode" id="button-1"> 
                                 <input type="checkbox" class="checkbox">
                                 <div class="knobs"></div>
                                 <div class="layer"></div>
@@ -71,7 +79,11 @@
         </div>
         <div class="nav">
             <div class="navlogo not-mobile">
-                <img src="{% static 'website/images/logo.png'%}" class="navimg">
+                {% if colormode == "light"%}
+                <img src="{% static 'website/images/logo-light.png'%}" class="navimg">
+                {% else %}
+                <img src="{% static 'website/images/logo-dark.png'%}" class="navimg">
+                {% endif %}
             </div>
             <p class="hover-underline-animation navlink">about</p>
             <p class="hover-underline-animation navlink">start</p>
@@ -80,10 +92,19 @@
             <p class="hover-underline-animation navlink">leaderboards</p>
             
             <div class="navlogo mobile">
-                <img src="{% static 'website/images/logo.png'%}" class="navimg">
+                {% if colormode == "light"%}
+                <img src="{% static 'website/images/logo-light.png'%}" class="navimg">
+                {% else %}
+                <img src="{% static 'website/images/logo-dark.png'%}" class="navimg">
+                {% endif %}
             </div>
             <div class="accountimgwrapper">
-                <img  src="{% static 'website/images/account.png'%}" class="accountimg">
+                {% if colormode == "light"%}
+                <img  src="{% static 'website/images/account-light.png'%}" class="accountimg">
+                {% else %}
+                <img  src="{% static 'website/images/account-dark.png'%}" class="accountimg">
+                {% endif %}
+                
             </div>
         </div>
         <div id="menuicon" class="mobile container">
@@ -103,6 +124,7 @@
     <script>
         var loginurl = "{% provider_login_url 'google'%}?next=/loginattempt";
         var is_anonymous = "{{anonymous}}";
+        var color_mode = "{{colormode}}"
         var selected_asset;
         var api_base_url = "{{api_base_url}}";
         var users_money = "{{money}}";
@@ -143,5 +165,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="{% static 'website/js/chart.js'%}"></script>
     <script src="{% static 'website/js/assetcharts.js'%}"></script>
-
 </html>

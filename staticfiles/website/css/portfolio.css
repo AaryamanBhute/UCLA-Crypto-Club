@@ -30,7 +30,7 @@
         left: 10px;
     }
     .search{
-        min-width: 20vw;
+        min-width: 40vw;
     }
     #instructions{
         min-width: 18vw;
@@ -70,7 +70,6 @@
     }
     #money{
         font-weight: 800;
-        background-color: white;
         font-size: 2em;
     }
     #instructioncollection p{
@@ -198,7 +197,6 @@
     }
     #money{
         font-weight: 800;
-        background-color: white;
     }
     .searchButton{
         width: 40px;
@@ -206,12 +204,13 @@
         font-size: 20px;
     }
     .search{
+        min-width: 25vw;
         margin-top: 20px;
         margin-bottom: 20px;
     }
     .searchTerm{
         padding: 5px;
-        height: 20px;
+        height: 20px;   
     }
     #instructioncollection p{
         margin: 10px;
@@ -316,7 +315,6 @@
     }
     #money{
         font-weight: 800;
-        background-color: white;
     }
     .searchButton{
         width: 40px;
@@ -387,7 +385,7 @@ canvas{
 .portfoliobubble{
     display: flex;
     max-height: 100%;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: var(--bubble-border-color) 0px 1px 2px 0px, var(--bubble-border-color) 0px 2px 6px 2px;
     border-radius: 10px;
     overflow-y: auto;
 }

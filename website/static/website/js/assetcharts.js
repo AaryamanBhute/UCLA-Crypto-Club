@@ -27,8 +27,8 @@ $(document).ready(function(){
                 datasets: [{
                     fill: false,
                     lineTension: 0,
-                    backgroundColor: "rgba(0,0,255,1.0)",
-                    borderColor: "rgba(0,0,255,0.1)",
+                    backgroundColor: "#00a8e8",
+                    borderColor: "#00a8e8",
                     data: yValues
                 }]
                 },

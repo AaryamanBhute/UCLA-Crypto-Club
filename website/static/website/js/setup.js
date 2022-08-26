@@ -1,13 +1,22 @@
 
 $( document ).ready(function() {
-    if(is_anonymous === "False"){
-        $("#button-1 input").first().prop("checked", true)
-    }
-    if($("#popup").text().includes("!")){
-        $("#popup").css("color", "green")
+    if(color_mode === "light"){
+        document.documentElement.setAttribute('data-theme', 'light');
     }
     else{
-        $("#popup").css("color", "red")
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    if(is_anonymous === "False"){
+        $(".anon-switch input").first().prop("checked", true)
+    }
+    if(color_mode === "dark"){
+        $(".light-mode input").first().prop("checked", true)
+    }
+    if($("#popup").text().includes("!")){
+        $("#popup p").css("color", "green")
+    }
+    else{
+        $("#popup p").css("color", "red")
     }
     if(window.location.href === window.location.origin + "/"){
         

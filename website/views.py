@@ -161,6 +161,12 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
     if(user_info != None):
         dic['anonymous'] = user_info.anonymous
         dic['money'] = floatToStr(round(Decimal(user_info.cash), 2))
+        if(user_info.light_mode):
+            dic['colormode'] = 'light'
+        else:
+            dic['colormode'] = 'dark'
+    else:
+        dic['colormode'] = 'dark'
     dic['api_base_url'] = settings.API_BASE_URL
     dic['static_url'] = static("")
     return(dic)
@@ -219,10 +225,15 @@ def accountSettings(request, settings):
     if(not request.user.is_authenticated):
         return(redirect('/'))
     new_settings = settings.split(";")
+    print(new_settings)
     if(new_settings[0] == 'false'):
         user_info.updateAnonymous(False)
     else:
         user_info.updateAnonymous(True)
+    if(new_settings[1] == 'false'):
+        user_info.updateLightMode(False)
+    else:
+        user_info.updateLightMode(True)
     request.session['popup'] = "Updated Settings!"
     return(redirect('/'))
 

@@ -11,9 +11,13 @@
     --red: red;
     --background-color: #2b2b2b;
     --text-color : white;
+    --alt-text-color: black;
+    --filter-to-text-color: brightness(0) saturate(100%) invert(99%) sepia(6%) saturate(2%) hue-rotate(103deg) brightness(106%) contrast(100%);
+    --bubble-border-color: rgba(230, 215, 215, 0.3);
+    --popup-border-color: rgba(14, 30, 37, 0.12);
 }
 
-html[data-theme='light']{
+[data-theme='light']{
     --accent: #00a8e8;
     --dark-accent: #008cc3;
     --green: #228B22;
@@ -22,6 +26,10 @@ html[data-theme='light']{
     --red: red;
     --background-color: white;
     --text-color : black;
+    --alt-text-color: white;
+    --filter-to-text-color: brightness(0) saturate(100%);
+    --bubble-border-color: rgba(60, 64, 67, 0.3);
+    --popup-border-color: rgba(183, 218, 233, 0.12);
 }
 
 /* set font for website*/
@@ -128,7 +136,6 @@ body { margin: 0; padding: 0;}
     }
     #popup{
         width: fit-content;
-        background-color: white;
         z-index: 5;
     }
     .closebutton{
@@ -295,6 +302,7 @@ body { margin: 0; padding: 0;}
     -webkit-transition: background-color 250ms linear;
     -ms-transition: background-color 250ms linear;
     transition: background-color 250ms linear;
+    filter: var(--filter-to-text-color);
 }
 .accountimg:hover{
     cursor: pointer;
@@ -302,6 +310,7 @@ body { margin: 0; padding: 0;}
     -webkit-transition: background-color 250ms linear;
     -ms-transition: background-color 250ms linear;
     transition: background-color 250ms linear;
+    filter: none;
 }
 
 .hover-underline-animation {
@@ -345,9 +354,8 @@ body { margin: 0; padding: 0;}
 }
 .corner{
     position: absolute;
-    
+    background-color: var(--background-color);
     transform: rotate(45deg);
-    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) -.5px -.5px 0px;
     border: none;
 }
@@ -433,7 +441,8 @@ body { margin: 0; padding: 0;}
     position: fixed;
     right: 10px;
     top: 10px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
     align-items: center;
     background-color: var(--background-color);
     z-index: 5;
@@ -444,7 +453,7 @@ body { margin: 0; padding: 0;}
 }
 
 .closebutton{
-    filter: brightness(0) saturate(100%);
+    filter: var(--filter-to-text-color);
     -webkit-transition: transform 250ms linear;
     -ms-transition: transform 250ms linear;
     transition: transform 250ms linear;

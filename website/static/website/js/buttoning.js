@@ -19,7 +19,14 @@ $(".navimg").click(function(){
 $(".savebuttonwrapper").click(function(){
     
     let settings = "";
-    if($("#button-1 input").is(":checked")){
+    if($(".anon-switch input").is(":checked")){
+        settings += "false";
+    }
+    else{
+        settings += "true";
+    }
+    settings += ";";
+    if($(".light-mode input").is(":checked")){
         settings += "false";
     }
     else{
