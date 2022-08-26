@@ -22,6 +22,8 @@ load_dotenv()
 
 import os
 
+import socket
+
 from datetime import date, datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +41,15 @@ API_BASE_URL = os.getenv("crypto_api_url")
 ALLOWED_EMAILS = os.getenv("allowed_emails")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if(socket.gethostname() in os.getenv("localhosts")):
+    SECURE_SSL_REDIRECT = False
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    DEBUG = True
+else:
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    DEBUG_= False
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -179,6 +189,3 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
-
-SECURE_SSL_REDIRECT = False
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
