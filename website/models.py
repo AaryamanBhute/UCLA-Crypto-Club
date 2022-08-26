@@ -12,6 +12,7 @@ class UserInfoManager(models.Manager):
 class UserInfo(models.Model):
     email = models.CharField(max_length=255)#user email
     anonymous = models.BooleanField(default=False)#does user want to be anonymous
+    light_mode = models.BooleanField(default=False)
     assets = models.TextField(default="", blank=True)#string of assets
     cash = models.DecimalField(decimal_places=50, max_digits=500, default=weeksSinceStart()*10000)#current amount of cash
     added_cash = models.DecimalField(decimal_places=50, max_digits=500, default=weeksSinceStart()*10000)#amount of cash given
@@ -37,6 +38,12 @@ class UserInfo(models.Model):
     def updateAnonymous(self, b):
         obj = self.get_queryset().select_for_update().get()
         obj.anonymous = b
+        obj.save()
+    
+    @transaction.atomic()
+    def updateLightMode(self, b):
+        obj = self.get_queryset().select_for_update().get()
+        obj.light_mode = b
         obj.save()
     
     @transaction.atomic()

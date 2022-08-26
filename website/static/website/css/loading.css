@@ -24,7 +24,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-color: var(--background-color);
   z-index: 99;
   top: 0;
 }
