@@ -6,21 +6,26 @@
     <div class="menupopup"></div>
     <div class="content"></div>
 </div>
+<div id="chartmenu">
+    <div class="content"></div>
+</div>
 <div class="portfoliowrapper">
     <div id="assets" class="portfoliobubble"> 
         <p class="title">Assets</p>
         <div class="breaker"></div>
         <p class="note"><span class="red">To sell Asset, Click Icon</span></p>
         <div class="breaker"></div>
+        <p class="note"><span class="accent">To see price history, Click name</span></p>
+        <div class="breaker"></div>
         <div id="assetcollection" class="ownedassets">
             {% for asset in assets reversed%}
-            <canvas id="{{asset.id}}" class="assetchart owned"></canvas>
-            <p class="pricehisttitle  flip" class="{{asset.id}}">Recent Price History</p>
+            <!--<canvas id="{{asset.id}}" class="assetchart owned"></canvas>-->
             <div class="asset" id="{{asset.symbol}}">
                 <img src="{{asset.img}}" class="asseticon">
-                <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
+                <p class="assetname" id="{{asset.id}}"><span class="bold accent">{{asset.symbol}}</span></p>
                 <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
                 <p class="value"><span class="bold">Value:</span> <span class="green">{{asset.val}}$</span></p>
+                <p class="pricehisttitle" class="{{asset.id}}">Recent Price History</p>
             </div>
             {% endfor %}
         </div>
@@ -41,13 +46,14 @@
        <div class="breaker"></div>
        <p class="note"><span class="green">Click Icons to Buy!</span></p>
        <div class="breaker"></div>
+       <p class="note"><span class="accent">To see price history, Click name</span></p>
+        <div class="breaker"></div>
         <div id="assetcollection" class="quickbuymenu">
             {% for asset in topCryptos reversed%}
-                <canvas id="{{asset.id}}/b" class="assetchart unowned"></canvas>
-                <p class="pricehisttitle  flip">Recent Price History</p>
+                <!--<canvas id="{{asset.id}}/b" class="assetchart unowned"></canvas>-->
                 <div class="asset" id="{{asset.symbol}}">
                     <img src="{{asset.img}}" class="asseticon">
-                    <p class="assetname"><span class="bold accent">{{asset.symbol}}</span></p>
+                    <p class="assetname" id="{{asset.id}}"><span class="bold accent">{{asset.symbol}}</span></p>
                     <p class="value"><span class="bold">Cost/Per: </span><span class="green">{{asset.val}}$</span></p>
                 </div>
             {% endfor %} 

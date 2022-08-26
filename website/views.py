@@ -339,9 +339,9 @@ def searchCryptos(request, term):
     except:
         return(JsonResponse({'data' : []}))
 
-def getPriceHistory(request, id):
+def getPriceHistory(request, id, ti, interval):
     t = int(round(time.time() * 1000))
-    response_data = requests.get('https://api.coincap.io/v2/assets/{i}/history?interval=h1&start={s}&end={e}'.format(i=id, s=str(t-108000000), e=str(t))).json()
+    response_data = requests.get('https://api.coincap.io/v2/assets/{i}/history?interval={inter}&start={s}&end={e}'.format(i=id, inter=interval, s=str(t-int(ti)*3600000), e=str(t))).json()
     try:
         for data in response_data['data']:
             break

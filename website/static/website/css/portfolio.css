@@ -101,7 +101,7 @@
         height: 50px;
         font-size: 1.2em;
     }
-    .closebuysellbutton{
+    .closebuysellbutton, .closechartsbutton{
         right: 10px;
         top: 10px;
         width: 50px;
@@ -115,6 +115,10 @@
     }
     .unowned{
         max-width: 80vw;
+    }
+    .assetchart{
+        width: 70vw!important;
+        height: auto;
     }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 1200px) {
@@ -216,7 +220,7 @@
         margin: 10px;
         font-size: 1em;
     }
-    .closebuysellbutton{
+    .closebuysellbutton, .closechartsbutton{
         right: 10px;
         top: 10px;
         width: 30px;
@@ -230,7 +234,7 @@
         height: 50px;
         font-size: 1.2em;
     }
-    .closebuysellbutton{
+    .closebuysellbutton, .closechartsbutton{
         right: 10px;
         top: 10px;
         width: 30px;
@@ -244,6 +248,10 @@
     }
     .unowned{
         max-width: 35vw;
+    }
+    .assetchart{
+        width: 30vw!important;
+        height: auto;
     }
 }
 @media only screen and (min-device-width: 1201px) {
@@ -335,7 +343,7 @@
     .submit{
         font-size: 1.2em;
     }
-    .closebuysellbutton{
+    .closebuysellbutton, .closechartsbutton{
         right: 10px;
         top: 10px;
         width: 30px;
@@ -347,6 +355,10 @@
     .unowned{
         max-width: 23vw;
     }
+    .assetchart{
+        width: 30vw!important;
+        height: auto;
+    }
 }
 
 canvas{
@@ -354,9 +366,22 @@ canvas{
     }
 
 .assetchart{
-    padding: 50px;
+    padding: 10px;
     height: auto;
-    transform: rotateX(180deg);
+}
+
+.assetchartwrapper{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    max-height: 80%;
+}
+
+.assetchartwrapper p{
+    padding: 10px;
+    font-weight: 900;
+    margin: 0;
 }
 
 .flip{
@@ -426,6 +451,7 @@ canvas{
     overflow-x: auto;
     white-space: nowrap;
     transform: rotateX(180deg);
+    margin-top: 20px;
 }
 
 .asset{
@@ -433,6 +459,17 @@ canvas{
     align-items: center;
     border-radius: 10px;
     transform: rotateX(180deg);
+}
+
+.assetname span{
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+}
+
+.assetname span:hover{
+    cursor: pointer;
+    color: var(--green);
+    text-decoration-color: var(--green);
 }
 
 .asseticon{
@@ -499,7 +536,7 @@ canvas{
 }
 
 
-.closebuysellbutton{
+.closebuysellbutton, .closechartsbutton{
     position: absolute;
     filter:  brightness(0) invert(26%) sepia(92%) saturate(7330%) hue-rotate(357deg) brightness(101%) contrast(116%);
 }
@@ -542,7 +579,7 @@ canvas{
     color: red;
 }
 
-#buysellmenu{
+#buysellmenu, #chartmenu{
     display: flex;
     z-index: 50;
     width: 100vw;
@@ -555,7 +592,7 @@ canvas{
     align-items: center;
 }
 
-#buysellmenu .content{
+#buysellmenu .content, #chartmenu .content{
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -563,13 +600,26 @@ canvas{
     box-shadow: var(--bubble-border-color) 0px 4px 8px -2px, var(--bubble-border-color) 0px 0px 0px 1px;
     max-width: 80%;
     max-height: 80%;
-    width: min-content;
-    height: fit-content;
     background-color: white;
     border-radius: 10px;
     opacity: 1;
     padding: 20px;
     margin: 0;
+}
+
+.chartstitle{
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+#chartmenu .content{
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#buysellmenu .content{
+    width: min-content;
+    height: fit-content;
 }
 
 #buysellmenu .content p, #buysellmenu .content label{
