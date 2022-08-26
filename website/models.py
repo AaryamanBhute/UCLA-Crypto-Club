@@ -26,7 +26,7 @@ class UserInfo(models.Model):
     def addPriceHistory(self, s):
         obj = self.get_queryset().select_for_update().get()
         hist = obj.price_history.split(";")
-        if(len(hist) == 50):
+        if(len(hist) == 200):
             hist.append(str(s))
             obj.price_history = ";".join(hist[1:])
         else:
