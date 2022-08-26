@@ -158,3 +158,12 @@ $(".searchButton").click(function(){
     openbuysellmenu($(".searchTerm").val(), true);
     $(".searchTerm").val('');
 });
+
+$('.searchTerm').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+     {
+        openbuysellmenu($(".searchTerm").val(), true);
+        $(".searchTerm").val('');
+     }
+   });   
