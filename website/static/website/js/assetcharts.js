@@ -60,27 +60,27 @@ function makeChartMenu(asset_name){
         <p class="chartstitle">${asset_name.toProperCase()} Charts</p>
         <div class="breaker"></div>
         <div class="assetchartwrapper">
-            <p>24 Hour Chart</p>
+            <p>12 Hour Chart</p>
             <canvas id="chart1" class="assetchart"></canvas>
         </div>
         <div class="assetchartwrapper">
-            <p>48 Hour Chart</p>
+            <p>24 Hour Chart</p>
             <canvas id="chart2" class="assetchart"></canvas>
         </div>
         <div class="assetchartwrapper">
-            <p>1 Week Chart</p>
+            <p>48 Hour Chart</p>
             <canvas id="chart3" class="assetchart"></canvas>
         </div>
         <div class="assetchartwrapper">
-            <p>1 Month Chart</p>
+            <p>1 Week Chart</p>
             <canvas id="chart4" class="assetchart"></canvas>
         </div>
         <div class="assetchartwrapper">
-            <p>3 Month Chart</p>
+            <p>1 Month Chart</p>
             <canvas id="chart5" class="assetchart"></canvas>
         </div>
         <div class="assetchartwrapper">
-            <p>6 Month Chart</p>
+            <p>3 Month Chart</p>
             <canvas id="chart6" class="assetchart"></canvas>
         </div>
         `
