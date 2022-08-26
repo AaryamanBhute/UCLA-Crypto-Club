@@ -102,7 +102,7 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
                 try:
                     asset.name = inf['name']
                     asset.symbol = inf['symbol']
-                    val = (Decimal(asset.amt) * round(Decimal(inf['priceUsd']), 2))
+                    val = round(Decimal(asset.amt) * (Decimal(inf['priceUsd'])), 2)
                     totalAssetValue += Decimal(val)
                     val = str(round(val, 2))
                     asset.val = floatToStr(val)
