@@ -8,6 +8,7 @@ urlpatterns = [
 	path('accounts/', include('allauth.urls')),
 	path('home', lambda request: redirect('/', permanent=True)),
 	path('portfolio', views.portfoliopage, name="portfolio"),
+	path('leadership', views.leadershippage, name="leadership"),
 	path('leaderboards', views.leaderboardpage, name="leaderboards"),
 	path('start', views.startpage, name="start"),
 	path('about', views.aboutpage, name="about"),

@@ -184,12 +184,19 @@ def leaderboardpage(request):
     return(render(request, 'website/leaderboards.html', dic))
 
 def startpage(request):
-    request.session['popup'] = "Work In Progress!"
-    return(redirect("/"))
+    logoutInvalids(request)
+    dic = makeDict(request, needsLeaderboard=True)
+    return(render(request, 'website/start.html', dic))
 
 def aboutpage(request):
-    request.session['popup'] = "Work In Progress!"
-    return(redirect("/"))
+    logoutInvalids(request)
+    dic = makeDict(request, needsLeaderboard=True)
+    return(render(request, 'website/about.html', dic))
+
+def leadershippage(request):
+    logoutInvalids(request)
+    dic = makeDict(request, needsLeaderboard=True)
+    return(render(request, 'website/leadership.html', dic))
 
 def portfoliopage(request):
     logoutInvalids(request)
