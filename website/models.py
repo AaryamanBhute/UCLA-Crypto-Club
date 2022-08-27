@@ -81,3 +81,9 @@ class UserInfo(models.Model):
         obj = self.get_queryset().select_for_update().get()
         obj.leaderboard_portfolio_value = a
         obj.save()
+
+class Leader(models.Model):
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    socials = models.TextField(blank=True)

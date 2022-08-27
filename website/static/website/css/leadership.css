@@ -1,0 +1,105 @@
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+    .leaderimg{
+        width: 550px;
+        height: 550px;
+    }
+    .leader .text{
+        width: 750px;
+        height: 300px;
+        font-size: 2em;
+        overflow-y: auto;
+    }
+    .socials img{
+        width: 120px;
+        height: 120px;
+    }
+    .socials{
+        height: 150px;
+    }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 1200px) {
+    .leaderimg{
+        width: 400px;
+        height: 400px;
+    }
+    .leader .text{
+        width: 600px;
+        height: 200px;
+        font-size: 1.3em;
+        overflow-y: auto;
+    }
+    .socials img{
+        width: 80px;
+        height: 80px;
+    }
+    .socials{
+        height: 100px;
+    }
+}
+@media only screen and (min-device-width: 1201px) {
+    .leaderimg{
+        width: 400px;
+        height: 400px;
+    }
+    .leader .text{
+        width: 600px;
+        height: 250px;
+        font-size: 1.3em;
+        overflow-y: auto;
+    }
+    .socials img{
+        width: 80px;
+        height: 80px;
+    }
+    .socials{
+        height: 100px;
+    }
+}
+
+.leaderimg{
+    max-width: 90%;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+    box-shadow: var(--bubble-border-color) 0px 1px 2px 0px, var(--bubble-border-color) 0px 2px 6px 2px;
+}
+
+.leader{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.leader .text{
+    margin: 20px;
+    font-weight: 600;
+    max-width: 90%;
+}
+
+.leader .text p{
+    margin: 8px;
+}
+
+.name, .role{
+    text-align: center;
+}
+
+.socials{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+}
+
+.socials img{
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: var(--bubble-border-color) 0px 1px 2px 0px, var(--bubble-border-color) 0px 2px 6px 2px;
+    filter: var(--filter-to-accent);
+}
+
+.leader{
+    margin-bottom: 50px;
+}

@@ -56,7 +56,7 @@ def getUserInfo(request):
 def floatToStr(val):
     return(f'{Decimal(val):,}')
 
-def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeaderboard=False):
+def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeaderboard=False, needsLeaders=False):
     user_info = getUserInfo(request)
     try:
         popup = request.session['popup']
@@ -64,6 +64,16 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
         popup = None
     request.session['popup'] = None
     dic = {'popup': popup}
+    if(needsLeaders):
+        leaders = list(Leader.objects.all())
+        socials = [leader.socials for leader in leaders]
+        for i in range(0, len(socials)):
+            socials[i] = socials[i].split(";")
+            for x in range(0, len(socials[i])):
+                socials[i][x] = socials[i][x].split('\\')
+                socials[i][x][0] = static("website/images/socials/" + socials[i][x][0] + ".png")
+        print(socials)
+        dic['leaders'] = zip(leaders, [static("website/images/leaders/" + leader.name.replace(" ", "").lower() + ".png") for leader in leaders], socials)
     if(needsTopCryptoInfo):
         topCryptos = []
         info = getInfos([crypto[0] for crypto in TopCryptos])['data']
@@ -186,16 +196,17 @@ def leaderboardpage(request):
 def startpage(request):
     logoutInvalids(request)
     dic = makeDict(request, needsLeaderboard=True)
+    print("here")
     return(render(request, 'website/start.html', dic))
 
 def aboutpage(request):
     logoutInvalids(request)
-    dic = makeDict(request, needsLeaderboard=True)
+    dic = makeDict(request)
     return(render(request, 'website/about.html', dic))
 
 def leadershippage(request):
     logoutInvalids(request)
-    dic = makeDict(request, needsLeaderboard=True)
+    dic = makeDict(request, needsLeaders=True)
     return(render(request, 'website/leadership.html', dic))
 
 def portfoliopage(request):

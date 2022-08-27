@@ -15,6 +15,7 @@
     --filter-to-text-color: brightness(0) saturate(100%) invert(99%) sepia(6%) saturate(2%) hue-rotate(103deg) brightness(106%) contrast(100%);
     --bubble-border-color: rgba(230, 215, 215, 0.3);
     --popup-border-color: rgba(14, 30, 37, 0.12);
+    --filter-to-accent: brightness(0) saturate(100%) invert(49%) sepia(63%) saturate(2329%) hue-rotate(163deg) brightness(96%) contrast(104%);
 }
 
 [data-theme='light']{
