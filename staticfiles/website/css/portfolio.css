@@ -420,6 +420,10 @@ canvas{
     padding: 0;
 }
 
+.buyinput{
+    color: black;
+}
+
 #buy, #assets, #instructions, #summary  {
     display: flex;
     text-align: center;
