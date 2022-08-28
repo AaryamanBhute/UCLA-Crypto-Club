@@ -35,6 +35,12 @@ class UserInfo(models.Model):
             obj.save()
 
     @transaction.atomic()
+    def updatePriceHistory(self, s):
+        obj = self.get_queryset().select_for_update().get()
+        obj.price_history = s
+        obj.save()
+
+    @transaction.atomic()
     def updateAnonymous(self, b):
         obj = self.get_queryset().select_for_update().get()
         obj.anonymous = b

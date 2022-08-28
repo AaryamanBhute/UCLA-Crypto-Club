@@ -64,6 +64,7 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
         popup = None
     request.session['popup'] = None
     dic = {'popup': popup}
+    dic['season_start'] = settings.SEASON_START.strftime("%m/%d/%Y")
     if(needsLeaders):
         leaders = list(Leader.objects.all())
         socials = [leader.socials for leader in leaders]
