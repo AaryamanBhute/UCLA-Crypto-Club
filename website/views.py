@@ -73,7 +73,6 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
             for x in range(0, len(socials[i])):
                 socials[i][x] = socials[i][x].split('\\')
                 socials[i][x][0] = static("website/images/socials/" + socials[i][x][0] + ".png")
-        print(socials)
         dic['leaders'] = zip(leaders, [static("website/images/leaders/" + leader.name.replace(" ", "").lower() + ".png") for leader in leaders], socials)
     if(needsTopCryptoInfo):
         topCryptos = []

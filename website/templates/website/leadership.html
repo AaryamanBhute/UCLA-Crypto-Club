@@ -15,7 +15,9 @@
         </div>
         <div class="socials">
             {% for social in leader.2%}
-            <img src="{{social.0}}" onclick="location.href = '{{social.1}}';">
+                {% if social.1 != None %}
+                    <img src="{{social.0}}" onclick="location.href = '{{social.1}}';">
+                {% endif %}
             {% endfor %}
         </div>
     </div>
