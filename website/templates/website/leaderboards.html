@@ -29,7 +29,11 @@
         <div class="analyticswrapper">
             <div id="analyticscontent">
                 <p class="minititle"> Your Leaderboard Rank</p>
+                    {% if is_guest%}
+                    <p class="accent large">Guest</p>
+                    {% else %}
                     <p class="accent large">{{rank}}</p>
+                    {% endif %}
                 <p class="minititle"> All Time Account Value Change</p>
                     <p class="atcv large">{{alltimechange}}%</p>
                 <p class="minititle"> Account Value Change Since Refresh</p>
