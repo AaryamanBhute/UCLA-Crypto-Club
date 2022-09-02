@@ -4,7 +4,7 @@
 {% block content %}
 
 <h1 class="header">&#8212; Our <span class="accent">Leadership</span>! &#8212;</h1>
-{% for leader in leaders%}
+{% for leader in leaders reversed%}
 <div class="center leader" style="width: 100%;">
     <img src="{{leader.1}}" class="leaderimg">
     <div>
