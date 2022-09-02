@@ -374,7 +374,7 @@ body { margin: 0; padding: 0;}
 .loginbutton1, .logoutbutton1{
     font-style: italic;
     font-size: 1.3em;
-    color: black;
+    color: var(--text-color);
     text-decoration: underline;
     margin-top: 10px;
     margin-bottom: 10px;
