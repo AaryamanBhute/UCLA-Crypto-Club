@@ -691,3 +691,8 @@ canvas{
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  .name{
+    text-decoration: underline;
+    cursor: pointer;
+  }

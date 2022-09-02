@@ -38,13 +38,26 @@ $(document).on('click', ".closebuysellbutton", function() {
     $("#buysellmenu .content").empty();
 });
 
+$(document).on('click', ".name", function(){
+    console.log("here");
+    let asset_n = selected_asset_info.id;
+    $('#chartmenu .content').append(makeChartMenu(asset_n))
+    $('#chartmenu').show();
+    makeChart(asset_n, "chart1", 12, 'm15');
+    makeChart(asset_n, "chart2", 24, 'm30');
+    makeChart(asset_n, "chart3", 48, 'h1');
+    makeChart(asset_n, "chart4", 168, 'h2');
+    makeChart(asset_n, "chart5", 730, 'h12');
+    makeChart(asset_n, "chart6", 2190, 'd1');
+});
+
 function generateBuyMenu(info){
     $("#buysellmenu .content").empty();
     return(
         `
         <img src="${static_url}website/images/closebutton.png" class="closebuysellbutton">
         <img src=${static_url}website/images/icon/${selected_asset_info.symbol.toLowerCase()}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
-        <p>Asset Name: <span class="accent">${selected_asset_info.name}</span></p>
+        <p>Asset Name: <span class="accent name">${selected_asset_info.name}</span></p>
         <p>Asset Symbol: <span class="accent">${selected_asset_info.symbol}</span></p>
         <p class="price"> Price Per: <span class="red">${floatToString(info.priceUsd)}$</span></p>
         <p class="funds"> Available Funds: <span class="green">${users_money}$</span></p>
@@ -62,7 +75,7 @@ function generateSellMenu(info){
         `
         <img src="${static_url}website/images/closebutton.png" class="closebuysellbutton">
         <img src=${static_url}website/images/icon/${selected_asset_info.symbol.toLowerCase()}.png onerror='this.src = "${static_url}website/images/icon/DEFAULT.png"' class="asseticon">
-        <p>Asset Name: <span class="accent">${selected_asset_info.name}</span></p>
+        <p>Asset Name: <span class="accent name">${selected_asset_info.name}</span></p>
         <p>Asset Symbol: <span class="accent">${selected_asset_info.symbol}</span></p>
         <p class="price"> Price Per: <span class="red">${floatToString(info.priceUsd)}$</span></p>
         <p class="funds"> Owned Amount: <span class="green">${symbolsToAmountOwned[selected_asset_info.symbol]}</span></p>
@@ -73,6 +86,8 @@ function generateSellMenu(info){
         <div class="sellsubmit submit" onclick="makeSellRequest()">submit</div>`
     );
 }
+
+
 
 function generateErrorMenu(searchTerm){
     $("#buysellmenu .content").empty();

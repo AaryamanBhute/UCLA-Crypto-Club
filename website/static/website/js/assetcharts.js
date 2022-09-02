@@ -93,7 +93,7 @@ $(document).ready(function(){
 });
 
 $('.assetname').click(function(){
-    let = asset_n = $(this).attr('id');
+    let asset_n = $(this).attr('id');
     $('#chartmenu .content').append(makeChartMenu(asset_n))
     $('#chartmenu').show();
     makeChart(asset_n, "chart1", 12, 'm15');
