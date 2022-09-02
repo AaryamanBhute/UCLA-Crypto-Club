@@ -692,7 +692,7 @@ canvas{
     background: #555;
   }
 
-  .name{
+  #buysellmenu .content .name{
     text-decoration: underline;
     cursor: pointer;
   }

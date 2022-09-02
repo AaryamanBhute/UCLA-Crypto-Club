@@ -8,8 +8,15 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         user_infos = UserInfo.objects.all()
+        guest_user_infos = GuestUserInfo.objects.all()
         amount = weeksSinceStart() * 10000
         for user_info in user_infos:
+            user_info.updateAssets("")
+            user_info.updateCash(amount)
+            user_info.updateAddedCash(amount)
+            user_info.updateLeaderboardPortfolioValue(amount)
+            user_info.updatePriceHistory(str(round(float(amount), 2)))
+        for user_info in guest_user_infos:
             user_info.updateAssets("")
             user_info.updateCash(amount)
             user_info.updateAddedCash(amount)

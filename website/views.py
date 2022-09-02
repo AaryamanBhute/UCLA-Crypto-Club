@@ -1,5 +1,6 @@
 from cmath import log
 from decimal import Decimal
+import email
 from urllib import request
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout as lout
@@ -39,18 +40,21 @@ class LeaderboardEntry:
         self.portfolio_value = portfolio_value
 
 def logoutInvalids(request):
-    if(not request.user.is_authenticated):
-        return
-    if(request.user.email.endswith("ucla.edu") == False and settings.ALLOWED_EMAILS.find(request.user.email) == -1):
-        lout(request)
+    pass
 
 def getUserInfo(request):
     if(not request.user.is_authenticated):
         return(None)
-    try:
-        user_info = UserInfo.objects.get(email__exact=request.user.email)
-    except:
-        user_info = UserInfo.objects.create_user_info(request.user.email)
+    if(request.user.email.endswith("ucla.edu")):
+        try:
+            user_info = UserInfo.objects.get(email__exact=request.user.email)
+        except:
+            user_info = UserInfo.objects.create_user_info(request.user.email)
+    else:
+        try:
+            user_info = GuestUserInfo.objects.get(email__exact=request.user.email)
+        except:
+            user_info = GuestUserInfo.objects.create_user_info(request.user.email)
     return(user_info)
 
 def floatToStr(val):
@@ -169,6 +173,7 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
             phistory = phistory.split(";")
             dic['price_history'] = ";".join([str(round(float(p), 2)) for p in phistory])
     if(user_info != None):
+        dic['is_guest'] = user_info.is_guest
         dic['anonymous'] = user_info.anonymous
         dic['money'] = floatToStr(round(Decimal(user_info.cash), 2))
         if(user_info.light_mode):
