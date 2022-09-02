@@ -652,7 +652,7 @@ canvas{
     right: auto;
     left: auto;
     color: red;
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 10px;
     font-weight: 900;
 }
