@@ -116,6 +116,7 @@ class UserInfo(models.Model):
         if(len(hist) == 200):
             hist.append(str(s))
             obj.price_history = ";".join(hist[1:])
+            obj.save()
         else:
             obj.price_history += ";" + str(s)
             obj.save()
