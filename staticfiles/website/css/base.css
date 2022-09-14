@@ -82,17 +82,24 @@ body { margin: 0; padding: 0;}
     #sidemenu{
         position: fixed;
         top: 0;
-        left: -80vw;
+        left: 0;
         width: 80vw;
         height: 100vh;
         background-color: var(--accent);
         z-index: 6;
-
+        transform: translate(-100%, 0%);
         display: flex;
         justify-content: center;
         color: white;
         flex-wrap: wrap;
         align-content: center;
+        transition: transform 1s;
+    }
+    .open-sidemenu{
+        transform: translate(0%, 0%)!important;
+    }
+    .open-menuicon{
+        transform: translate(64vw, 0) !important;
     }
     #sidemenu p{
         width: 100%;
@@ -104,6 +111,7 @@ body { margin: 0; padding: 0;}
         left: 50px;
         top: 50px;
         z-index: 6;
+        transition: transform 1s;
     }
     .linkwrapper{
         height: 60%;

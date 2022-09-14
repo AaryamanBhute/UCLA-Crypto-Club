@@ -1,4 +1,4 @@
-var sidemenustate = false;
+/*var sidemenustate = false;
 var sidemenumoving = false;
 $("#menuicon").click(function(){
     if(sidemenumoving){
@@ -24,4 +24,32 @@ $("#menuicon").click(function(){
         sidemenustate = true;
     }
     
-});
+});*/
+var sidemenustate = false;
+var sidemenumoving = false;
+$("#menuicon").click(function(){
+    if(sidemenumoving){
+        return
+    }
+    console.log("here")
+    if(!sidemenustate){
+        sidemenumoving = true
+        $("#sidemenu").toggleClass('open-sidemenu')
+        setTimeout(function(){
+            $("#menuicon").toggleClass('open-menuicon');
+            $("#hamburgericon").toggleClass('is-active');
+            sidemenumoving = false;
+        }, 200)
+        sidemenustate = true;
+    }
+    else{
+        sidemenumoving = true
+        $("#menuicon").toggleClass('open-menuicon');
+        $("#hamburgericon").toggleClass('is-active');
+        setTimeout(function(){
+            $("#sidemenu").toggleClass('open-sidemenu')
+            sidemenumoving = false;
+        }, 200)
+        sidemenustate = false;
+    }
+})
