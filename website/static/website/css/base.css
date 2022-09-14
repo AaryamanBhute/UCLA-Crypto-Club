@@ -270,7 +270,7 @@ body { margin: 0; padding: 0;}
     align-items: center;
 }
 .navimg{
-    height: 90%;
+    height: 100%;
     width: auto;
     -webkit-transition: transform 250ms linear;
     -ms-transition: transform 250ms linear;
