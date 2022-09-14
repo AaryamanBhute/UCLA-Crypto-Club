@@ -217,7 +217,7 @@ def leadershippage(request):
 def portfoliopage(request):
     logoutInvalids(request)
     if(not request.user.is_authenticated):
-        request.session['popup'] = "Log In First!"
+        request.session['popup'] = "Log In First"
         return(redirect('/'))
     dic = makeDict(request, True, True)
     return(render(request, 'website/portfolio.html', dic))
