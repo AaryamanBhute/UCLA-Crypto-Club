@@ -1,4 +1,7 @@
 from django.urls import path, re_path, include
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
+
 from django.shortcuts import redirect
 from . import views
 

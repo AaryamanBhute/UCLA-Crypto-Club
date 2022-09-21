@@ -190,28 +190,31 @@ def makeDict(request, needsAssetInfo=False, needsTopCryptoInfo=False, needsLeade
 def home(request):
     logoutInvalids(request)
     dic = makeDict(request)
-
+    dic['title'] = 'Home'
     return(render(request, 'website/home.html', dic))
 
 def leaderboardpage(request):
     logoutInvalids(request)
     dic = makeDict(request, needsLeaderboard=True)
+    dic['title'] = 'Leaderboard'
     return(render(request, 'website/leaderboards.html', dic))
 
 def startpage(request):
     logoutInvalids(request)
     dic = makeDict(request, needsLeaderboard=True)
-    print("here")
+    dic['title'] = 'Start'
     return(render(request, 'website/start.html', dic))
 
 def aboutpage(request):
     logoutInvalids(request)
     dic = makeDict(request)
+    dic['title'] = 'About'
     return(render(request, 'website/about.html', dic))
 
 def leadershippage(request):
     logoutInvalids(request)
     dic = makeDict(request, needsLeaders=True)
+    dic['title'] = 'Leadership'
     return(render(request, 'website/leadership.html', dic))
 
 def portfoliopage(request):
@@ -220,6 +223,7 @@ def portfoliopage(request):
         request.session['popup'] = "Log In First"
         return(redirect('/'))
     dic = makeDict(request, True, True)
+    dic['title'] = 'Portfolio'
     return(render(request, 'website/portfolio.html', dic))
 
 def logoutpage(request):
