@@ -128,6 +128,26 @@ function openbuysellmenu(asset, buy){
     });
 }
 
+function openbuysellmenuID(id, buy){
+    console.log("ID USAGE");
+    $(".menupopup").empty();
+    cryptoSearchID(id).done(function (result){
+        var info = result['data']
+        if(info == null){
+            $("#buysellmenu .content").first().append(generateErrorMenu(id));
+        }
+        else if(buy === true){
+            selected_asset_info = info;
+            $("#buysellmenu .content").first().append(generateBuyMenu(info));
+        }
+        else{
+            selected_asset_info = info;
+            $("#buysellmenu .content").first().append(generateSellMenu(info));
+        }
+        $("#buysellmenu").show();
+    });
+}
+
 function makeSellRequest(){
     let amount = $(".sellinput").val()
     if(amount === "" ){
@@ -160,13 +180,13 @@ function makeBuyRequest(){
 
 
 $(".ownedassets .asset .asseticon").click(function(){
-    let asset = $(this).parent().attr('id');
-    openbuysellmenu(asset, false);
+    let id = $(this).parent().attr('id');
+    openbuysellmenuID(id, false);
 });
 
 $(".quickbuymenu .asset .asseticon").click(function(){
-    let asset = $(this).parent().attr('id');
-    openbuysellmenu(asset, true);
+    let id = $(this).parent().attr('id');
+    openbuysellmenuID(id, true);
 });
 
 $(".searchButton").click(function(){

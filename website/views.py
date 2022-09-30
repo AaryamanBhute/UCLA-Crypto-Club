@@ -366,6 +366,15 @@ def searchCryptos(request, term):
     except:
         return(JsonResponse({'data' : []}))
 
+def searchCryptoID(request, id):
+    print("landed")
+    response_data = requests.get((settings.API_BASE_URL + "/{i}").format(i=id)).json()
+    try:
+        response_data['data']
+        return(JsonResponse(response_data))
+    except:
+        return(JsonResponse({'data' : {}}))
+
 def getPriceHistory(request, id, ti, interval):
     t = int(round(time.time() * 1000))
     response_data = requests.get('https://api.coincap.io/v2/assets/{i}/history?interval={inter}&start={s}&end={e}'.format(i=id, inter=interval, s=str(t-int(ti)*3600000), e=str(t))).json()

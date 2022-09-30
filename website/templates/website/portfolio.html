@@ -20,7 +20,7 @@
         <div id="assetcollection" class="ownedassets">
             {% for asset in assets reversed%}
             <!--<canvas id="{{asset.id}}" class="assetchart owned"></canvas>-->
-            <div class="asset" id="{{asset.symbol}}">
+            <div class="asset" id="{{asset.id}}">
                 <img src="{{asset.img}}" class="asseticon">
                 <p class="assetname" id="{{asset.id}}"><span class="bold accent">{{asset.symbol}}</span></p>
                 <p class="stockamount"><span class="bold">Coins:</span> {{asset.amt}}</p>
@@ -50,7 +50,7 @@
         <div id="assetcollection" class="quickbuymenu">
             {% for asset in topCryptos reversed%}
                 <!--<canvas id="{{asset.id}}/b" class="assetchart unowned"></canvas>-->
-                <div class="asset" id="{{asset.symbol}}">
+                <div class="asset" id="{{asset.id}}">
                     <img src="{{asset.img}}" class="asseticon">
                     <p class="assetname" id="{{asset.id}}"><span class="bold accent">{{asset.symbol}}</span></p>
                     <p class="value"><span class="bold">Cost/Per: </span><span class="green">{{asset.val}}$</span></p>
